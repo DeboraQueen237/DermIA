@@ -1,0 +1,155 @@
+{
+  "version": "0.1.0-brouillon",
+  "statut": "BROUILLON - non validé par un clinicien. Sources à renseigner. Ne pas utiliser en conditions réelles.",
+  "maladies": [
+    {
+      "id": "buruli",
+      "nom": "Ulcère de Buruli",
+      "urgence": "prioritaire",
+      "signes": [
+        "Nodule, plaque ou gonflement (œdème), souvent peu ou pas douloureux",
+        "Ulcère à bords décollés, peu douloureux, souvent sur un membre",
+        "Fièvre rare",
+        "Évolution lente sur des semaines"
+      ],
+      "alertes": [
+        "Lésion qui s'agrandit rapidement",
+        "Atteinte près d'une articulation, du visage ou des yeux"
+      ],
+      "conduite": [
+        "Référer rapidement vers un centre de prise en charge : plus la lésion est détectée tôt, plus le traitement antibiotique est efficace",
+        "Couvrir d'un pansement propre non adhésif ; ne rien appliquer de caustique ni de préparation sur la plaie",
+        "Noter la localisation et la taille de la lésion (photo avec une règle)",
+        "Ne pas attendre l'essai d'un remède avant de référer"
+      ],
+      "prevention": [
+        "Nettoyer et couvrir toute plaie ou piqûre",
+        "Consulter dès l'apparition d'un nodule inhabituel qui ne guérit pas"
+      ]
+    },
+    {
+      "id": "lepre",
+      "nom": "Lèpre",
+      "urgence": "prioritaire",
+      "signes": [
+        "Tache claire ou rougeâtre avec perte de sensibilité au toucher ou à la chaleur",
+        "Nodules ou épaississement de la peau",
+        "Engourdissement ou faiblesse des mains ou des pieds, nerf épaissi",
+        "Généralement pas de démangeaison"
+      ],
+      "alertes": [
+        "Plaie indolore sur les mains ou les pieds",
+        "Faiblesse musculaire, main en griffe, pied tombant",
+        "Atteinte des yeux ou rougeur douloureuse d'une lésion ancienne"
+      ],
+      "conduite": [
+        "Référer vers un centre de santé pour confirmation : un traitement par polychimiothérapie existe via les programmes de lutte",
+        "Tester la sensibilité de la tache (coton, pointe mousse) et noter le résultat",
+        "Examiner les personnes qui vivent dans le foyer",
+        "Rassurer : la maladie se guérit et le traitement bloque rapidement la transmission"
+      ],
+      "prevention": [
+        "Dépistage des personnes en contact étroit",
+        "Diagnostic précoce pour éviter les handicaps",
+        "Lutter contre la stigmatisation"
+      ]
+    },
+    {
+      "id": "pian",
+      "nom": "Pian",
+      "urgence": "prioritaire",
+      "signes": [
+        "Surtout chez l'enfant de moins de 15 ans",
+        "Papillome ou ulcère croûteux jaunâtre, peu douloureux, souvent aux jambes",
+        "Plaques sur la plante des pieds",
+        "Plusieurs enfants atteints dans la communauté"
+      ],
+      "alertes": [
+        "Douleurs osseuses ou gonflement des doigts",
+        "Lésions étendues ou qui reviennent"
+      ],
+      "conduite": [
+        "Référer pour confirmation et traitement antibiotique",
+        "Rechercher d'autres cas dans la famille et à l'école",
+        "Signaler au district : le pian fait l'objet d'une surveillance"
+      ],
+      "prevention": [
+        "Hygiène corporelle, accès à l'eau et au savon",
+        "Traitement des contacts selon le programme"
+      ]
+    },
+    {
+      "id": "gale",
+      "nom": "Gale",
+      "urgence": "standard",
+      "signes": [
+        "Démangeaisons intenses, surtout la nuit",
+        "Petits boutons et traces de grattage entre les doigts, aux poignets, à la ceinture, aux aisselles",
+        "Plusieurs personnes du foyer atteintes",
+        "Chez le jeune enfant : paumes, plantes des pieds, cuir chevelu possibles"
+      ],
+      "alertes": [
+        "Croûtes épaisses étendues",
+        "Surinfection : pus, chaleur, fièvre",
+        "Nourrisson"
+      ],
+      "conduite": [
+        "Orienter vers le traitement prescrit selon le protocole du centre de santé",
+        "Traiter en même temps tous les membres du foyer",
+        "Laver à l'eau chaude (60 °C ou plus) ou isoler 3 jours, au sec dans un sac fermé, draps et vêtements portés",
+        "Ne pas appliquer de produits non prescrits sur la peau irritée"
+      ],
+      "prevention": [
+        "Éviter de partager vêtements et literie",
+        "En cas de plusieurs cas dans une école ou une collectivité, alerter le district"
+      ]
+    },
+    {
+      "id": "teigne",
+      "nom": "Teigne (dermatophytie)",
+      "urgence": "standard",
+      "signes": [
+        "Plaque ronde à bord rouge et squameux, centre plus clair",
+        "Cuir chevelu : plaque de cheveux cassés ou d'alopécie avec squames, surtout chez l'enfant",
+        "Démangeaison modérée"
+      ],
+      "alertes": [
+        "Gonflement douloureux du cuir chevelu avec pus",
+        "Lésions multiples ou qui persistent"
+      ],
+      "conduite": [
+        "Référer pour un traitement antifongique prescrit (le cuir chevelu demande un traitement par voie orale)",
+        "Ne pas partager peignes, bonnets, serviettes",
+        "Examiner les autres enfants du foyer"
+      ],
+      "prevention": [
+        "Hygiène des objets de coiffure",
+        "Éviter le contact avec les animaux atteints"
+      ]
+    },
+    {
+      "id": "impetigo",
+      "nom": "Impétigo",
+      "urgence": "standard",
+      "signes": [
+        "Croûtes jaune miel sur des vésicules ou des érosions",
+        "Surtout chez l'enfant : autour du nez et de la bouche, jambes",
+        "Contagieux, peu douloureux"
+      ],
+      "alertes": [
+        "Fièvre, extension rapide, grosses bulles",
+        "Urines foncées ou gonflement du visage ou des jambes",
+        "Nourrisson"
+      ],
+      "conduite": [
+        "Nettoyer doucement à l'eau propre et au savon",
+        "Référer pour un traitement antibiotique prescrit",
+        "Couper les ongles, laver les mains ; durée d'éviction de l'école selon l'avis du centre de santé"
+      ],
+      "prevention": [
+        "Hygiène des mains et des plaies",
+        "Couvrir les plaies et les piqûres"
+      ]
+    }
+  ]
+}
