@@ -75,7 +75,7 @@ def fit_temperature(logits, y) -> float:
         return loss
 
     opt.step(closure)
-    return float(log_t.exp())
+    return float(log_t.detach().exp())
 
 
 def ece(probs: np.ndarray, y: np.ndarray, bins: int = 10) -> float:
