@@ -73,12 +73,13 @@ def charger_ai_leprosy():
             label = cat_names.get(cats[0], "unknown") if cats else "unknown"
 
             # Normalisation du label
-            if label.lower() in ["leprosy", "leprosy_positive"]:
+            label_lower = label.lower().strip()
+            if label_lower in ["leprosy", "leprosy_positive", "lep"]:
                 label_norm = "leprosy"
-            elif "non" in label.lower():
+            elif "non" in label_lower or "nonlep" in label_lower:
                 label_norm = "non_leprosy"
             else:
-                label_norm = label.lower()
+                label_norm = label_lower
 
             rows.append({
                 "dataset": "AI-Leprosy",
