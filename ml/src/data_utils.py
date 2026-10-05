@@ -12,9 +12,10 @@ LABEL_KEYWORDS: list[tuple[str, list[str]]] = [
     ("lepre", ["leprosy", "lepra", "hansen"]),
     ("pian", ["yaws"]),
     ("gale", ["scabies"]),
+    ("tungiase", ["tungiasis"]),
     ("impetigo", ["impetigo"]),
     ("teigne_mycose", ["tinea", "ringworm", "fungal", "dermatophyt", "candid", "mycosis"]),
-    ("eczema", ["eczema", "atopic dermatitis", "dermatitis"]),
+    ("eczema", ["eczema", "atopic dermatitis", "contact dermatitis"]),
 ]
 
 
