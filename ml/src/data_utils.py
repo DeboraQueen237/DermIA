@@ -39,11 +39,12 @@ def load_manifest(csv_path: str) -> pd.DataFrame:
 
 
 def make_splits(df: pd.DataFrame, seed: int = 0, min_groups: int = 10) -> pd.DataFrame:
-    """Ajoute une colonne 'split' (train/val/test/train_only), découpée PAR PATIENT.
-
-    Les classes avec moins de `min_groups` patients sont marquées 'train_only' :
-    elles aident l'entraînement mais ne sont PAS évaluées (pas de mesure crédible).
     """
+    Ajoute une colonne 'split' (train/val/test/train_only), découpée PAR PATIENT.
+    Utilise GroupShuffleSplit pour garantir des proportions 70/15/15 stables.
+    """
+    from sklearn.model_selection import GroupShuffleSplit
+
     df = df.copy()
     n_groups = df.groupby("label")["group_id"].nunique()
     rare = set(n_groups[n_groups < min_groups].index)
@@ -52,12 +53,20 @@ def make_splits(df: pd.DataFrame, seed: int = 0, min_groups: int = 10) -> pd.Dat
     if ok.empty or ok["label"].nunique() < 2:
         return df
 
-    sgkf = StratifiedGroupKFold(n_splits=5, shuffle=True, random_state=seed)
-    folds = list(sgkf.split(ok, ok["label"], ok["group_id"]))
-    idx = ok.index.to_numpy()
-    df.loc[idx, "split"] = "train"
-    df.loc[idx[folds[0][1]], "split"] = "test"
-    df.loc[idx[folds[1][1]], "split"] = "val"
+    # Étape 1 : train (70%) vs temp (30%)
+    gss1 = GroupShuffleSplit(n_splits=1, test_size=0.30, random_state=seed)
+    train_idx, temp_idx = next(gss1.split(ok, ok["label"], ok["group_id"]))
+
+    train_df = ok.iloc[train_idx]
+    temp_df = ok.iloc[temp_idx]
+
+    # Étape 2 : temp → val (50%) / test (50%)
+    gss2 = GroupShuffleSplit(n_splits=1, test_size=0.50, random_state=seed)
+    val_idx, test_idx = next(gss2.split(temp_df, temp_df["label"], temp_df["group_id"]))
+
+    df.loc[train_df.index, "split"] = "train"
+    df.loc[temp_df.iloc[val_idx].index, "split"] = "val"
+    df.loc[temp_df.iloc[test_idx].index, "split"] = "test"
     return df
 
 

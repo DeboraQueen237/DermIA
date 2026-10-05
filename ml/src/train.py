@@ -149,11 +149,15 @@ def main():
                 loss = F.cross_entropy(model(x), y, label_smoothing=0.1)
             opt.zero_grad()
             scaler.scale(loss).backward()
+            scaler.unscale_(opt)              # ← AJOUT : unscale avant le clip
+            torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=5.0)  # ← AJOUT : gradient clipping
             scaler.step(opt)
             scaler.update()
             sched.step()
         lv, yv = logits_of(model, dl_va, dev)
-        f1 = f1_score(yv, lv.argmax(1), average="macro", labels=[classes.index(c) for c in evaluated], zero_division=0)
+        f1 = f1_score(yv, lv.argmax(1), average="macro",
+                      labels=[classes.index(c) for c in evaluated],
+                      zero_division=0)
         print(f"epoch {ep + 1}/{a.epochs}  loss {loss.item():.3f}  val macro-F1 {f1:.3f}")
         if f1 > best_f1:
             best_f1, best_state = f1, {k: v.cpu().clone() for k, v in model.state_dict().items()}
