@@ -117,7 +117,7 @@ class Triage {
 
 const _urgenceRank = {'standard': 0, 'prioritaire': 1, 'urgente': 2};
 
-Triage triage(Map<String, String> a, KnowledgeBase kb) {
+Triage triage(Map<String, String> a, KnowledgeBase kb, {Map<String, double>? imageScores}) {
   final s = <String, double>{for (final d in kb.diseases) d.id: 0};
   void add(String id, double v) {
     if (s.containsKey(id)) s[id] = s[id]! + v;
@@ -172,6 +172,26 @@ Triage triage(Map<String, String> a, KnowledgeBase kb) {
   }
   if (duree == 'moyen') add('pian', 1);
   if (foyer == 'oui') add('pian', 1);
+
+  // Eczéma / Dermatite
+  if (aspect == 'tache' || aspect == 'grattage') add('eczema', 2);
+  if (dem == 'moderee' || dem == 'intense_nuit') add('eczema', 3);
+  if (douleur == 'non') add('eczema', 1);
+  if (duree == 'long') add('eczema', 2);
+
+  // Furoncle / Abcès
+  if (aspect == 'nodule') add('furoncle', 3);
+  if (douleur == 'oui') add('furoncle', 3);
+  if (duree == 'court') add('furoncle', 2);
+
+  // Fusion with image classifier when available
+  if (imageScores != null) {
+    for (final entry in imageScores.entries) {
+      if (s.containsKey(entry.key)) {
+        s[entry.key] = s[entry.key]! + entry.value * 8;
+      }
+    }
+  }
 
   final ranked = kb.diseases.where((d) => s[d.id]! > 0).toList()
     ..sort((x, y) => s[y.id]!.compareTo(s[x.id]!));

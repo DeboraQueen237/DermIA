@@ -1,0 +1,87 @@
+{
+  "id": "teigne",
+  "version": "1.0.0",
+  "derniere_mise_a_jour": "2026-10-01",
+  "noms": {
+    "fr": "Teigne du cuir chevelu et dermatophytose",
+    "en": "Tinea capitis / Ringworm",
+    "locaux": [
+      { "langue": "Baoulé", "nom": "N'Dri", "region": "Côte d'Ivoire" },
+      { "langue": "Malinké", "nom": "Koun-koli", "region": "Guinée / Côte d'Ivoire" }
+    ]
+  },
+  "urgence": "standard",
+  "classification_oms": "Infection fongique superficielle (Dermatophytose)",
+  "signes_evocateurs": [
+    "Cuir chevelu : plaques d'alopécie (chute de cheveux) squameuses arrondies avec cheveux cassés courts près de la racine",
+    "Plaques tondantes microsporiques (grandes plaques uniques) ou trichophytiques (multiples petites plaques éparses)",
+    "Peau glabre (herpès circiné / tinea corporis) : lésions annulaires érythématosquameuses à bordure active vésiculeuse surélevée et centre s'éclaircissant",
+    "Prurit modéré à intense",
+    "Fréquence maximale chez les enfants d'âge préscolaire et scolaire"
+  ],
+  "diagnostics_differentiels": [
+    "Pelade (alopécie nue lisse sans squames ni cheveux cassés)",
+    "Psoriasis du cuir chevelu (squames blanches épaisses, pas de chute de cheveux)",
+    "Dermatite séborrhéique (squames grasses jaunâtres sans alopécie)",
+    "Lupus érythémateux discoïde",
+    "Alopécie de traction (due aux tresses serrées)"
+  ],
+  "signes_alerte": [
+    "Kérion de Celse : macaron inflammatoire tuméfié très douloureux, chaud, criblé d'orifices purulents ('pomme d'arrosoir'), risque d'alopécie cicatricielle définitive",
+    "Teigne favique (favus) : godets faviques jaunes soufre mélicériques déprimés au centre avec odeur de 'nid de souris'",
+    "Fièvre et adénopathies cervicales satellites inflammatoires volumineuses",
+    "Surinfection bactérienne secondaire majeure avec écoulement purulent"
+  ],
+  "conduite_a_tenir": {
+    "communautaire_asc": [
+      "Référer au centre de santé : LA TEIGNE DU CUIR CHEVELU NÉCESSITE TOUJOURS UN TRAITEMENT PAR VOIE ORALE (les crèmes seules sont inefficaces pour atteindre le bulbe pilaire)",
+      "Conseiller de ne pas raser la tête avec une lame partagée ou rouillée (risque de transmission du VIH et hépatites et surinfection)",
+      "Ne pas partager peignes, brosses, bonnets, foulards, casquettes, oreillers",
+      "Examiner les autres enfants de la fratrie et de la classe",
+      "Éviter les contacts étroits avec les chiots, chatons ou bétail présentant des zones dépilées"
+    ],
+    "centre_sante": [
+      "Traitement systémique de première intention : Griséofulvine per os (20 mg/kg/j en 1 ou 2 prises au cours d'un repas gras comme du lait pour maximiser l'absorption) pendant 6 à 8 semaines",
+      "Alternative chez l'enfant > 1 an : Terbinafine per os pendant 4 semaines (ajustée au poids)",
+      "Traitement topique adjuvant : shampooing kétoconazole 2% ou lotion povidone iodée 2 fois par semaine pour réduire la dissémination de spores viables",
+      "En cas de Kérion inflammatoire : ajouter une courte corticothérapie orale (prednisolone 0.5-1 mg/kg/j pendant 5 jours) pour limiter le risque d'alopécie cicatricielle"
+    ],
+    "hopital_reference": [
+      "Diagnostic mycologique mycologique de référence (examen direct + culture)",
+      "Prise en charge des kérions surinfectés complexes ou formes résistantes"
+    ]
+  },
+  "criteres_reference": [
+    "Présence d'un macaron inflammatoire suppuré (Kérion)",
+    "Suspicion de favus",
+    "Persistance des plaques après 8 semaines de traitement bien conduit"
+  ],
+  "prevention": [
+    "Désinfection régulière des instruments de coiffure dans les salons communautaires",
+    "Dépistage des enfants symptomatiques dans les écoles primaires",
+    "Traitement vétérinaire des animaux domestiques porteurs",
+    "Hygiène corporelle régulière"
+  ],
+  "remedes_traditionnels": [
+    {
+      "nom": "Pâte de feuilles de Cassia alata (Senna alata / Dartrier)",
+      "niveau_preuve": "A",
+      "description": "Contient de l'acide chrysophanique et des anthraquinones à très forte activité antifongique démontrée scientifiquement contre les dermatophytes.",
+      "consigne_app": "Recommandé comme traitement topique complémentaire sur la peau glabre (tinea corporis). Attention : ne remplace pas le traitement oral en cas d'atteinte du cuir chevelu."
+    },
+    {
+      "nom": "Application d'huile de moteur usagée ou d'acide de batterie",
+      "niveau_preuve": "D",
+      "description": "Pratique toxique courante pour 'brûler le champignon'.",
+      "consigne_app": "DANGER GRAVE : Risque de brûlure caustique du cuir chevelu, alopécie cicatricielle irréversible définitive, saturnisme et toxicité systémique."
+    }
+  ],
+  "sources": [
+    "OMS - Mycologie clinique pratique et dermatophytoses tropicales",
+    "British Association of Dermatologists Guidelines for the management of tinea capitis"
+  ],
+  "relecteurs": [
+    { "nom": "Comité Médical DermIA", "titre": "Mycologue médical", "date": "2026-09-21" }
+  ],
+  "statut_validation": "en_revue"
+}

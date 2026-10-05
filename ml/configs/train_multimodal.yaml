@@ -1,0 +1,84 @@
+# Configuration d'entraînement multimodal DermIA (Image + Clinique)
+experiment:
+  name: "dermia_multimodal_v1"
+  version: "1.0.0"
+  seed: 42
+  tracking: "mlflow"
+
+data:
+  manifest_path: "ml/data/manifest.csv"
+  images_root: "ml/data/raw/fitzpatrick17k/images"
+  patient_id_col: "patient_id" # Split par patient strict (anti-leakage)
+  label_col: "label"
+  fitzpatrick_col: "fitzpatrick_scale"
+  image_size: 224
+  batch_size: 32
+  num_workers: 2
+  train_split: 0.70
+  val_split: 0.15
+  test_split: 0.15
+
+model:
+  architecture: "multimodal_film"
+  backbone: "mobilenetv3_small_100"
+  pretrained: true
+  clinical_dim: 16
+  num_classes: 8
+  dropout_rate: 0.3
+  classes:
+    - "buruli"
+    - "lepre"
+    - "pian"
+    - "gale"
+    - "teigne"
+    - "impetigo"
+    - "eczema"
+    - "furoncle"
+
+training:
+  epochs: 30
+  optimizer: "AdamW"
+  learning_rate: 0.0005
+  weight_decay: 0.01
+  scheduler: "cosine_annealing"
+  min_lr: 0.000005
+  loss: "focal_loss" # Adaptée aux classes rares
+  focal_gamma: 2.0
+  class_weighting: true
+
+augmentation:
+  # Attention éthique : pas d'altération de teinte (hue) pour respecter la carnation de peau
+  random_crop_scale: [0.7, 1.0]
+  horizontal_flip: true
+  vertical_flip: true
+  rotation_degrees: 20
+  color_jitter:
+    brightness: 0.2
+    contrast: 0.2
+    saturation: 0.1
+    hue: 0.0 # FIXE A 0.0 POUR NE PAS DÉNATURER LA TEINTE DE PEAU
+  gaussian_blur: true
+
+calibration:
+  method: "temperature_scaling"
+  ece_bins: 10
+  target_ece_max: 0.05 # ECE cible < 5%
+
+fairness_audit:
+  evaluate_by_fitzpatrick: true
+  subgroups:
+    - name: "claire"
+      types: [1, 2]
+    - name: "intermédiaire"
+      types: [3, 4]
+    - name: "foncée"
+      types: [5, 6]
+  disparate_impact_threshold: 0.80 # Règle des 4/5èmes
+  bootstrap_replicates: 500
+
+export:
+  target_format: "tflite"
+  quantization: "int8_ptq"
+  quantization_calibration_samples: 200
+  equivalence_max_atol: 0.02
+  output_dir: "ml/export"

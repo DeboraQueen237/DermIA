@@ -1,0 +1,86 @@
+{
+  "id": "impetigo",
+  "version": "1.0.0",
+  "derniere_mise_a_jour": "2026-10-01",
+  "noms": {
+    "fr": "Impétigo",
+    "en": "Impetigo",
+    "locaux": [
+      { "langue": "Dioula", "nom": "Foni", "region": "Afrique de l'Ouest" }
+    ]
+  },
+  "urgence": "standard",
+  "classification_oms": "Infection bactérienne cutanée superficielle (Staphylococcus aureus / Streptococcus pyogenes)",
+  "signes_evocateurs": [
+    "Vésicules ou bulles éphémères à contenu d'abord clair puis purulent, qui se rompent rapidement",
+    "Croûtes épaisses couleur miel doré ou ambré (croûtes mélicériques) reposant sur une base érythémateuse humide",
+    "Localisation élective au visage (pourtour des narines, de la bouche, menton) et aux extrémités",
+    "Contagiosité extrême par auto-inoculation (lésions satellites suite au grattage)",
+    "Peu ou pas de douleur, démangeaisons discrètes",
+    "Très fréquent chez l'enfant en période chaude et humide"
+  ],
+  "diagnostics_differentiels": [
+    "Herpès simplex récurrent (vésicules groupées en bouquet)",
+    "Varicelle (lésions d'âges différents sur tout le corps avec atteinte muqueuse)",
+    "Gale surinfectée (rechercher le prurit nocturne et les sillons aux poignets)",
+    "Eczéma atopique surinfecté",
+    "Brûlure superficielle suintante"
+  ],
+  "signes_alerte": [
+    "Glomérulonéphrite aiguë post-streptococcique (GNA) : survenue 2 à 3 semaines après l'impétigo d'urines 'couleur coca-cola' ou bouillon sale, œdème du visage (paupières) ou des chevilles, céphalées, hypertension artérielle",
+    "Syndrome d'exfoliation généralisée staphylococcique (SSSS / épidermolyse staphylococcique du nourrisson) : décollement cutané étendu en 'linge mouillé', signe de Nikolsky positif, fièvre élevée",
+    "Ecthyma : ulcération creusante en 'porte-pièce' couverte d'une croûte noirâtre adhérente nécrotique",
+    "Fièvre élevée ou altération marquée de l'état général"
+  ],
+  "conduite_a_tenir": {
+    "communautaire_asc": [
+      "Référer au centre de santé pour traitement antibiotique adapté",
+      "Nettoyer délicatement les croûtes à l'eau propre tiède et au savon ordinaire sans frotter brutalement",
+      "Lavage méticuleux et répété des mains avec du savon",
+      "Couper et brosser les ongles des enfants très courts",
+      "Éviction de la collectivité scolaire ou garderie pendant au moins 48 heures après le début du traitement antibiotique",
+      "Sensibiliser les parents sur la surveillance obligatoire de la couleur des urines pendant le mois suivant"
+    ],
+    "centre_sante": [
+      "Forme localisée (peu de lésions, sans extension) : Nettoyage antiseptique (chlorhexidine) + Mupirocine pommade 2% ou acide fusidique 2% 2 à 3 fois par jour pendant 5 à 7 jours",
+      "Forme étendue (> 5 lésions, ecthyma ou bulleuse) : Antibiothérapie par voie orale antistaphylococcique/antistreptococcique : Amoxicilline-acide clavulanique (80 mg/kg/j) ou Céfalexine per os pendant 7 jours. En cas d'allergie aux bêtalactamines : Azithromycine ou Clarithromycine",
+      "Bandelette urinaire systématique à J15 et J21 à la recherche d'une protéinurie/hématurie microscopique post-streptococcique"
+    ],
+    "hopital_reference": [
+      "Hospitalisation urgente et perfusion en réanimation en cas de décollement épidermolytique staphylococcique (SSSS)",
+      "Néphrologie pédiatrique en cas d'insuffisance rénale aiguë post-streptococcique"
+    ]
+  },
+  "criteres_reference": [
+    "Présence de grosses bulles flasques ou décollements cutanés chez le nouveau-né/nourrisson",
+    "Urines foncées ou œdème de la face dans les suites",
+    "Fièvre élevée ou absence d'amélioration sous traitement topique après 72 heures"
+  ],
+  "prevention": [
+    "Hygiène corporelle rigoureuse et lavage régulier des mains à l'eau et au savon",
+    "Soins immédiats et désinfection de toute égratignure, piqûre d'insecte ou gale",
+    "Ne pas partager serviettes de bain et vêtements"
+  ],
+  "remedes_traditionnels": [
+    {
+      "nom": "Miel pur d'abeille médicinale",
+      "niveau_preuve": "B",
+      "description": "Propriétés antimicrobiennes et osmotiques prouvées in vitro favorisant la détersion des croûtes.",
+      "consigne_app": "Peut être appliqué en fine couche sur les lésions localisées en l'absence de crèmes antibiotiques, après nettoyage préalable au savon."
+    },
+    {
+      "nom": "Cendres de bois ou bouses séchées appliquées sur les lésions",
+      "niveau_preuve": "D",
+      "description": "Croyance populaire d'assèchement des cloques.",
+      "consigne_app": "DANGER EXTRÊME : Source majeure de surinfection bactérienne grave, tétanos néonatal et septicémie. À bannir rigoureusement."
+    }
+  ],
+  "sources": [
+    "OMS - Prise en charge des infections cutanées bactériennes en soins de santé primaires",
+    "Haute Autorité de Santé (HAS) - Choix et durée de l'antibiothérapie : Impétigo"
+  ],
+  "relecteurs": [
+    { "nom": "Comité Médical DermIA", "titre": "Pédiatre infectiologue", "date": "2026-09-25" }
+  ],
+  "statut_validation": "en_revue"
+}

@@ -1,0 +1,93 @@
+{
+  "id": "lepre",
+  "version": "1.0.0",
+  "derniere_mise_a_jour": "2026-10-01",
+  "noms": {
+    "fr": "Lèpre (Maladie de Hansen)",
+    "en": "Leprosy (Hansen's disease)",
+    "locaux": [
+      { "langue": "Dioula", "nom": "Kouna", "region": "Afrique de l'Ouest" },
+      { "langue": "Baoulé", "nom": "Kokoroko", "region": "Côte d'Ivoire" }
+    ]
+  },
+  "urgence": "prioritaire",
+  "classification_oms": "Maladie Tropicale Négligée - Paucibacillaire (PB) ou Multibacillaire (MB)",
+  "signes_evocateurs": [
+    "Tache(s) cutanée(s) hypopigmentée(s) ou érythémateuse(s) avec nette perte de sensibilité au toucher, à la douleur ou au chaud/froid",
+    "Épaississement palpable et douloureux d'un tronc nerveux périphérique (nerf ulnaire, péronier commun, tibial postérieur, grand auriculaire)",
+    "Perte de sudation (anhidrose) et perte de poils au niveau de la macule",
+    "Nodules cutanés ou infiltration diffuse de la face (faciès léonin en forme multibacillaire avancée)",
+    "Plaies chroniques indolores (maux perforants) sur les plantes de pieds ou les paumes",
+    "Évolution très lente et insidieuse sur plusieurs mois ou années"
+  ],
+  "diagnostics_differentiels": [
+    "Pityriasis versicolor (sensibilité toujours conservée)",
+    "Vitiligo (dépigmentation blanche totale porcelaine, sensibilité intacte)",
+    "Eczématide achromiante",
+    "Lupus érythémateux",
+    "Sarcoïdose cutanée",
+    "Syphilis secondaire"
+  ],
+  "signes_alerte": [
+    "Déficit moteur soudain : main en griffe, pied tombant, impossibilité de fermer l'œil (lagophtalmie)",
+    "Réaction lépreuse de type 1 (œdème violent et rougeur vive des macules avec névrite aiguë douloureuse)",
+    "Réaction de type 2 (Érythème noueux lépreux : nodules sous-cutanés violacés douloureux, fièvre, arthralgies, orchite)",
+    "Ulcère plantaire profond avec suspicion d'ostéite sous-jacente",
+    "Baisse d'acuité visuelle ou œil rouge douloureux"
+  ],
+  "conduite_a_tenir": {
+    "communautaire_asc": [
+      "Référer au centre de santé pour confirmation et enregistrement auprès du programme national de lutte contre la lèpre",
+      "Tester systématiquement la sensibilité de chaque tache à l'aide d'un brin de coton ou d'une pointe mousse",
+      "Palper délicatement les coudes et genoux à la recherche de cordons nerveux épaissis",
+      "Examiner l'ensemble des membres du ménage et contacts proches",
+      "Éducation et déstigmatisation : insister sur le fait que la lèpre n'est pas héréditaire, n'est pas une malédiction, et qu'elle devient non transmissible dès les premières prises de médicaments"
+    ],
+    "centre_sante": [
+      "Classification PB (1 à 5 lésions) ou MB (> 5 lésions ou atteinte nerveuse multiple)",
+      "Polychimiothérapie OMS (PCT) gratuite standardisée (Rifampicine, Dapsone, Clofazimine) sur 6 mois (PB) ou 12 mois (MB)",
+      "Soins d'hygiène des pieds : trempage à l'eau propre, ponçage des callosités, application d'huile végétale",
+      "Fourniture de chaussures adaptées à semelles épaisses microcellulaires",
+      "Prise en charge urgente des réactions lépreuses par corticothérapie orale si névrite aiguë"
+    ],
+    "hopital_reference": [
+      "Prise en charge chirurgicale des névrites compressives (neurolyse)",
+      "Chirurgie réparatrice et transposition tendineuse pour correction des griffes",
+      "Chirurgie oculaire protectrice pour la lagophtalmie"
+    ]
+  },
+  "criteres_reference": [
+    "Toute lésion cutanée hypoesthésique ou anesthésique",
+    "Atteinte nerveuse motrice débutante",
+    "Suspicion de réaction lépreuse avec fièvre et douleur névritique"
+  ],
+  "prevention": [
+    "Dépistage actif et régulier des personnes contacts vivant sous le même toit",
+    "Administration d'une dose unique préventive de Rifampicine (SDR-PEP) aux contacts éligibles selon les directives OMS",
+    "Diagnostic précoce avant l'apparition de toute infirmité de degré 2 (déformations visibles)",
+    "Campagnes de sensibilisation communautaire en langues locales"
+  ],
+  "remedes_traditionnels": [
+    {
+      "nom": "Bains de vapeurs de plantes médicinales ou scarifications",
+      "niveau_preuve": "D",
+      "description": "Pratiques traditionnelles pour 'chasser le venin du sang'.",
+      "consigne_app": "DANGER : Risque de brûlures sévères sur peau anesthésiée sans que le patient ne ressente la douleur, et risque de transmission sanguine. À proscrire absolument."
+    },
+    {
+      "nom": "Huile de Chaulmoogra (Hydnocarpus)",
+      "niveau_preuve": "B",
+      "description": "Remède historique utilisé avant l'avènement des antibiotiques modernes.",
+      "consigne_app": "Historiquement efficace mais supplanté par la Polychimiothérapie moderne (PCT OMS) infiniment plus curative et sûre. Ne doit jamais retarder ni remplacer la PCT."
+    }
+  ],
+  "sources": [
+    "OMS - Lignes directrices pour le diagnostic, le traitement et la prévention de la lèpre (2018)",
+    "Global Leprosy Strategy 2021–2030 (Towards Zero Leprosy)",
+    "Programme National d'Élimination de la Lèpre (PNE-Lèpre)"
+  ],
+  "relecteurs": [
+    { "nom": "Comité Médical DermIA", "titre": "Coordonnateur léprologie", "date": "2026-09-20" }
+  ],
+  "statut_validation": "en_revue"
+}

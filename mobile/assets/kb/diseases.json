@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0-brouillon",
+  "version": "0.2.0-brouillon",
   "statut": "BROUILLON - non validé par un clinicien. Sources à renseigner. Ne pas utiliser en conditions réelles.",
   "maladies": [
     {
@@ -10,11 +10,13 @@
         "Nodule, plaque ou gonflement (œdème), souvent peu ou pas douloureux",
         "Ulcère à bords décollés, peu douloureux, souvent sur un membre",
         "Fièvre rare",
-        "Évolution lente sur des semaines"
+        "Évolution lente sur des semaines",
+        "Proximité de cours d'eau ou de zones humides"
       ],
       "alertes": [
         "Lésion qui s'agrandit rapidement",
-        "Atteinte près d'une articulation, du visage ou des yeux"
+        "Atteinte près d'une articulation, du visage ou des yeux",
+        "Lésion très étendue ou profonde"
       ],
       "conduite": [
         "Référer rapidement vers un centre de prise en charge : plus la lésion est détectée tôt, plus le traitement antibiotique est efficace",
@@ -24,7 +26,8 @@
       ],
       "prevention": [
         "Nettoyer et couvrir toute plaie ou piqûre",
-        "Consulter dès l'apparition d'un nodule inhabituel qui ne guérit pas"
+        "Consulter dès l'apparition d'un nodule inhabituel qui ne guérit pas",
+        "Porter des vêtements protecteurs près des cours d'eau"
       ]
     },
     {
@@ -35,12 +38,14 @@
         "Tache claire ou rougeâtre avec perte de sensibilité au toucher ou à la chaleur",
         "Nodules ou épaississement de la peau",
         "Engourdissement ou faiblesse des mains ou des pieds, nerf épaissi",
-        "Généralement pas de démangeaison"
+        "Généralement pas de démangeaison",
+        "Évolution sur des mois à des années"
       ],
       "alertes": [
         "Plaie indolore sur les mains ou les pieds",
         "Faiblesse musculaire, main en griffe, pied tombant",
-        "Atteinte des yeux ou rougeur douloureuse d'une lésion ancienne"
+        "Atteinte des yeux ou rougeur douloureuse d'une lésion ancienne",
+        "Réaction lépreuse : inflammation soudaine et fièvre"
       ],
       "conduite": [
         "Référer vers un centre de santé pour confirmation : un traitement par polychimiothérapie existe via les programmes de lutte",
@@ -66,16 +71,18 @@
       ],
       "alertes": [
         "Douleurs osseuses ou gonflement des doigts",
-        "Lésions étendues ou qui reviennent"
+        "Lésions étendues ou qui reviennent",
+        "Atteinte articulaire"
       ],
       "conduite": [
-        "Référer pour confirmation et traitement antibiotique",
+        "Référer pour confirmation et traitement antibiotique (azithromycine en dose unique)",
         "Rechercher d'autres cas dans la famille et à l'école",
-        "Signaler au district : le pian fait l'objet d'une surveillance"
+        "Signaler au district : le pian fait l'objet d'une surveillance et d'un programme d'éradication"
       ],
       "prevention": [
         "Hygiène corporelle, accès à l'eau et au savon",
-        "Traitement des contacts selon le programme"
+        "Traitement des contacts selon le programme",
+        "Signalement rapide des cas"
       ]
     },
     {
@@ -89,9 +96,9 @@
         "Chez le jeune enfant : paumes, plantes des pieds, cuir chevelu possibles"
       ],
       "alertes": [
-        "Croûtes épaisses étendues",
+        "Croûtes épaisses étendues (gale croûteuse / norvégienne)",
         "Surinfection : pus, chaleur, fièvre",
-        "Nourrisson"
+        "Nourrisson ou personne immunodéprimée"
       ],
       "conduite": [
         "Orienter vers le traitement prescrit selon le protocole du centre de santé",
@@ -111,11 +118,13 @@
       "signes": [
         "Plaque ronde à bord rouge et squameux, centre plus clair",
         "Cuir chevelu : plaque de cheveux cassés ou d'alopécie avec squames, surtout chez l'enfant",
-        "Démangeaison modérée"
+        "Démangeaison modérée",
+        "Peut atteindre les ongles (épaissis, jaunâtres)"
       ],
       "alertes": [
-        "Gonflement douloureux du cuir chevelu avec pus",
-        "Lésions multiples ou qui persistent"
+        "Gonflement douloureux du cuir chevelu avec pus (kérion)",
+        "Lésions multiples ou qui persistent malgré le traitement",
+        "Extension rapide"
       ],
       "conduite": [
         "Référer pour un traitement antifongique prescrit (le cuir chevelu demande un traitement par voie orale)",
@@ -124,7 +133,8 @@
       ],
       "prevention": [
         "Hygiène des objets de coiffure",
-        "Éviter le contact avec les animaux atteints"
+        "Éviter le contact avec les animaux atteints",
+        "Sécher correctement les plis après le bain"
       ]
     },
     {
@@ -134,12 +144,14 @@
       "signes": [
         "Croûtes jaune miel sur des vésicules ou des érosions",
         "Surtout chez l'enfant : autour du nez et de la bouche, jambes",
-        "Contagieux, peu douloureux"
+        "Contagieux, peu douloureux",
+        "Se propage facilement par contact direct"
       ],
       "alertes": [
         "Fièvre, extension rapide, grosses bulles",
-        "Urines foncées ou gonflement du visage ou des jambes",
-        "Nourrisson"
+        "Urines foncées ou gonflement du visage ou des jambes (glomérulonéphrite post-streptococcique)",
+        "Nourrisson",
+        "Récidives fréquentes"
       ],
       "conduite": [
         "Nettoyer doucement à l'eau propre et au savon",
@@ -148,7 +160,67 @@
       ],
       "prevention": [
         "Hygiène des mains et des plaies",
-        "Couvrir les plaies et les piqûres"
+        "Couvrir les plaies et les piqûres",
+        "Ne pas gratter les lésions"
+      ]
+    },
+    {
+      "id": "eczema",
+      "nom": "Eczéma / Dermatite",
+      "urgence": "standard",
+      "signes": [
+        "Plaques rouges, sèches, avec démangeaisons",
+        "Peau rugueuse, squameuse ou épaissie par le grattage",
+        "Localisation fréquente : plis des coudes, dos des genoux, visage chez le nourrisson",
+        "Évolution chronique avec des poussées",
+        "Souvent associé à des allergies ou de l'asthme dans la famille"
+      ],
+      "alertes": [
+        "Surinfection : suintement, pus, croûtes jaunâtres, fièvre",
+        "Eczéma étendu ou résistant au traitement",
+        "Nourrisson avec lésions étendues",
+        "Herpès sur eczéma (vésicules groupées, douleur)"
+      ],
+      "conduite": [
+        "Hydrater la peau régulièrement avec une crème émolliente",
+        "Éviter les irritants (savons agressifs, tissus synthétiques, chaleur excessive)",
+        "Référer vers un centre de santé pour un traitement adapté si les lésions sont étendues ou surinfectées",
+        "Couper les ongles courts pour limiter le grattage"
+      ],
+      "prevention": [
+        "Hydratation quotidienne de la peau",
+        "Porter des vêtements en coton",
+        "Éviter les déclencheurs connus (poussière, certains aliments si identifiés)",
+        "Bains courts à l'eau tiède, sans savon agressif"
+      ]
+    },
+    {
+      "id": "furoncle",
+      "nom": "Furoncle / Abcès cutané",
+      "urgence": "standard",
+      "signes": [
+        "Bosse rouge, chaude, douloureuse, souvent centrée sur un poil",
+        "Augmentation de volume sur quelques jours, devient fluctuante",
+        "Peut pointer et drainer du pus",
+        "Localisation fréquente : fesses, aisselles, cuisses, nuque"
+      ],
+      "alertes": [
+        "Fièvre ou frissons associés",
+        "Furoncles multiples ou récidivants (furonculose)",
+        "Abcès volumineux, profond ou situé sur le visage (risque de complications)",
+        "Traînée rouge partant de la lésion (lymphangite)"
+      ],
+      "conduite": [
+        "Ne pas percer ni presser le furoncle soi-même",
+        "Appliquer des compresses tièdes pour favoriser la maturation",
+        "Référer vers un centre de santé si la lésion est volumineuse, si fièvre, ou si elle ne s'améliore pas",
+        "Garder la zone propre et couverte"
+      ],
+      "prevention": [
+        "Hygiène quotidienne, lavage des mains",
+        "Ne pas partager les serviettes ni les rasoirs",
+        "Traiter les éraflures et coupures rapidement",
+        "Consulter si les furoncles reviennent souvent"
       ]
     }
   ]

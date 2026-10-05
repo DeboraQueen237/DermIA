@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DermIA Disease Knowledge Schema",
+  "type": "object",
+  "required": [
+    "id",
+    "version",
+    "derniere_mise_a_jour",
+    "noms",
+    "urgence",
+    "classification_oms",
+    "signes_evocateurs",
+    "diagnostics_differentiels",
+    "signes_alerte",
+    "conduite_a_tenir",
+    "criteres_reference",
+    "prevention",
+    "remedes_traditionnels",
+    "sources",
+    "statut_validation"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "version": { "type": "string" },
+    "derniere_mise_a_jour": { "type": "string", "format": "date" },
+    "noms": {
+      "type": "object",
+      "required": ["fr", "en"],
+      "properties": {
+        "fr": { "type": "string" },
+        "en": { "type": "string" },
+        "locaux": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["langue", "nom"],
+            "properties": {
+              "langue": { "type": "string" },
+              "nom": { "type": "string" },
+              "region": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "urgence": { "type": "string", "enum": ["standard", "prioritaire", "urgente"] },
+    "classification_oms": { "type": "string" },
+    "signes_evocateurs": { "type": "array", "items": { "type": "string" } },
+    "diagnostics_differentiels": { "type": "array", "items": { "type": "string" } },
+    "signes_alerte": { "type": "array", "items": { "type": "string" } },
+    "conduite_a_tenir": {
+      "type": "object",
+      "required": ["communautaire_asc", "centre_sante"],
+      "properties": {
+        "communautaire_asc": { "type": "array", "items": { "type": "string" } },
+        "centre_sante": { "type": "array", "items": { "type": "string" } },
+        "hopital_reference": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "criteres_reference": { "type": "array", "items": { "type": "string" } },
+    "prevention": { "type": "array", "items": { "type": "string" } },
+    "remedes_traditionnels": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["nom", "niveau_preuve", "description", "consigne_app"],
+        "properties": {
+          "nom": { "type": "string" },
+          "niveau_preuve": { "type": "string", "enum": ["A", "B", "C", "D"] },
+          "description": { "type": "string" },
+          "consigne_app": { "type": "string" }
+        }
+      }
+    },
+    "sources": { "type": "array", "items": { "type": "string" } },
+    "relecteurs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "nom": { "type": "string" },
+          "titre": { "type": "string" },
+          "date": { "type": "string" }
+        }
+      }
+    },
+    "statut_validation": { "type": "string", "enum": ["brouillon", "en_revue", "valide_clinique"] }
+  }
+}

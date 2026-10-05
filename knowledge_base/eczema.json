@@ -1,0 +1,86 @@
+{
+  "id": "eczema",
+  "version": "1.0.0",
+  "derniere_mise_a_jour": "2026-10-01",
+  "noms": {
+    "fr": "Eczéma / Dermatite atopique et de contact",
+    "en": "Eczema / Atopic & Contact Dermatitis",
+    "locaux": [
+      { "langue": "Dioula", "nom": "Féré-féré", "region": "Afrique de l'Ouest" }
+    ]
+  },
+  "urgence": "standard",
+  "classification_oms": "Dermatose inflammatoire chronique prurigineuse",
+  "signes_evocateurs": [
+    "Prurit souvent intense, responsable de lésions de grattage et d'écorchures",
+    "Plaques érythémateuses mal délimitées, vésiculeuses puis suintantes (phase aiguë) ou sèches, squameuses et lichénifiées (épaissies et quadrillées, phase chronique)",
+    "Topographie caractéristique selon l'âge : nourrisson (joues, front, convexités des membres) ; grand enfant et adulte (plis des coudes, creux poplités, poignets, cou)",
+    "Xérose cutanée (peau sèche et rugueuse généralisée)",
+    "Notion d'atopie personnelle ou familiale (asthme, rhinite allergique, conjonctivite)",
+    "Évolution fluctuante par poussées entrecoupées de rémissions"
+  ],
+  "diagnostics_differentiels": [
+    "Gale (rechercher sillons aux espaces interdigitaux et prurit familial nocturne)",
+    "Dermatite séborrhéique (squames jaunâtres grasses, pas de prurit sévère)",
+    "Psoriasis (plaques très bien délimitées, squames blanches épaisses sèches)",
+    "Dermatophytose (lésions annulaires à bordure active centrifuge)",
+    "Lichen simplex chronique"
+  ],
+  "signes_alerte": [
+    "Syndrome de Kaposi-Juliusberg (surinfection herpétique aiguë) : vésicules ombiliquées profuses rapidement croûteuses ou nécrotiques, altération aiguë sévère de l'état général, fièvre élevée (URGENCE VITALE PÉDIATRIQUE)",
+    "Impétiginisation massive (surinfection à staphylocoque) : suintement purulent jaune, croûtes mélicériques étendues, ganglions douloureux",
+    "Érythrodermie : atteinte rouge inflammatoire généralisée touchant plus de 90% de la surface corporelle avec troubles thermorégulateurs et déshydratation"
+  ],
+  "conduite_a_tenir": {
+    "communautaire_asc": [
+      "Orienter vers le centre de santé pour évaluation de la sévérité et prescription",
+      "Éducation thérapeutique essentielle : la pierre angulaire du traitement quotidien est l'HYDRATATION CONSTANTE DE LA PEAU (beurre de karité pur ou vaseline neutre après le bain sur peau encore humide)",
+      "Bains tièdes courts (5 à 10 minutes) sans frotter avec des éponges rêches ou des cailloux",
+      "Utiliser un savon doux sans parfum ou syndet (savon de Marseille ou surgras)",
+      "Couper les ongles très courts pour prévenir l'effraction de la barrière cutanée",
+      "Privilégier les vêtements amples en pur coton et éviter les fibres synthétiques ou la laine irritante"
+    ],
+    "centre_sante": [
+      "Traitement des poussées inflammatoires : Dermocorticoïdes d'activité modérée à forte (ex: Butyrate d'hydrocortisone 0.1% ou Bétaméthasone) 1 application par jour jusqu'à disparition de la rougeur, puis espacement progressif",
+      "Traitement de fond continu : Émollients appliqués généreusement 1 à 2 fois par jour sur peau non lésée",
+      "Antihistaminique sédatif de 1ère génération le soir en cas d'insomnie rebelle due au prurit nocturne",
+      "Si surinfection staphylococcique avérée : antibiothérapie orale antistaphylococcique pendant 7 jours"
+    ],
+    "hopital_reference": [
+      "Hospitalisation urgente et Aciclovir intraveineux si suspicion de Kaposi-Juliusberg herpétique",
+      "Bilan allergologique (patch-tests) si suspicion d'eczéma de contact professionnel ou cosmétique"
+    ]
+  },
+  "criteres_reference": [
+    "Apparition brutale de vésicules ombiliquées avec fièvre (suspicion de surinfection herpétique)",
+    "Érythrodermie (> 90% de la peau rouge)",
+    "Échec thérapeutique des dermocorticoïdes bien suivis"
+  ],
+  "prevention": [
+    "Application quotidienne d'émollients dès la naissance chez les nourrissons à risque atopique",
+    "Éviction des allergènes et irritants identifiés (détergents agressifs, parfums)",
+    "Maintien d'un environnement aéré et non surchauffé"
+  ],
+  "remedes_traditionnels": [
+    {
+      "nom": "Beurre de karité pur non raffiné (Butyrospermum parkii)",
+      "niveau_preuve": "A",
+      "description": "Riche en acides gras insaturés (acide oléique, stéarique) et alcools triterpéniques anti-inflammatoires, restaure remarquablement la barrière lipidique cutanée.",
+      "consigne_app": "FORTEMENT RECOMMANDÉ comme émollient naturel de choix en Afrique subsaharienne. Appliquer après la toilette sur peau encore légèrement humide."
+    },
+    {
+      "nom": "Poudres de plantes caustiques ou jus de citron sur les lésions",
+      "niveau_preuve": "D",
+      "description": "Utilisé dans l'espoir d'assécher le suintement.",
+      "consigne_app": "DANGER : Aggravation majeure de la brûlure cutanée, choc douloureux chez l'enfant et surinfection."
+    }
+  ],
+  "sources": [
+    "OMS - Global Report on Atopic Dermatitis",
+    "Consensus de la Société Française de Dermatologie sur la Dermatite Atopique"
+  ],
+  "relecteurs": [
+    { "nom": "Comité Médical DermIA", "titre": "Dermatologue pédiatrique", "date": "2026-09-24" }
+  ],
+  "statut_validation": "en_revue"
+}

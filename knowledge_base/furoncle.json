@@ -1,0 +1,88 @@
+{
+  "id": "furoncle",
+  "version": "1.0.0",
+  "derniere_mise_a_jour": "2026-10-01",
+  "noms": {
+    "fr": "Furoncle et Abcès cutané",
+    "en": "Furuncle (Boil) & Skin Abscess",
+    "locaux": [
+      { "langue": "Dioula", "nom": "Fien", "region": "Afrique de l'Ouest" },
+      { "langue": "Baoulé", "nom": "Kpondé", "region": "Côte d'Ivoire" }
+    ]
+  },
+  "urgence": "standard",
+  "classification_oms": "Infection bactérienne nécrosante du follicule pilo-sébacé (Staphylococcus aureus)",
+  "signes_evocateurs": [
+    "Nodule érythémateux douloureux, induré et chaud, centré par un poil",
+    "Évolution en 3 à 5 jours vers la suppuration avec ramollissement central et apparition d'un point jaune (bourbillon)",
+    "Évacuation spontanée de pus crémeux épais et du bourbillon nécrotique, laissant une cratère qui cicatrise",
+    "Localisations de frottement et macération : nuque, fesses, cuisses, aisselles, périnée",
+    "Douleur pulsatile souvent vive gênant le sommeil ou la position assise"
+  ],
+  "diagnostics_differentiels": [
+    "Folliculite superficielle (pustule millimétrique non indurée centrée sur un poil)",
+    "Hydrosadénite suppurée / Maladie de Verneuil (nodules et abcès récidivants des plis axillaires et inguinaux)",
+    "Kyste sébacé épidermoïde surinfecté",
+    "Myiase furonculoïde (ver de Cayor - orifice avec pointe respiratoire mobile de la larve)",
+    "Anthrax staphylococcique (agglomérat de furoncles communiquant sous la peau)"
+  ],
+  "signes_alerte": [
+    "Staphylococcie maligne de la face : furoncle localisé à l'étage moyen de la face (lèvre supérieure, ailes du nez, sillon nasogénien) manipulé ou pressé, provoquant un œdème facial majeur, des frissons solennels, une fièvre à 40°C et un risque mortel de thrombophlébite du sinus caverneux",
+    "Anthrax staphylococcique étendu avec nécrose cutanée étendue et retentissement septique général",
+    "Furonculose : répétition chronique de furoncles multiples faisant suspecter un diabète méconnu, une dénutrition ou une infection par le VIH",
+    "Traînée rouge inflammatoire ascendante (lymphangite) ou adénopathie satellite volumineuse et douloureuse"
+  ],
+  "conduite_a_tenir": {
+    "communautaire_asc": [
+      "Référer au centre de santé",
+      "INTERDICTION ABSOLUE DE PRESSER, PERCER OU INCISER LE FURONCLE AVEC LES DOIGTS OU DES AIGUILLES (risque majeur de dissémination bactérienne hématogène)",
+      "Appliquer des compresses humides tièdes propres pendant 15 minutes 3 fois par jour pour favoriser la maturation et le drainage spontané",
+      "Laver soigneusement la zone avec de l'eau propre et du savon ordinaire",
+      "Lavage des mains après tout contact avec la lésion",
+      "Couvrir d'une compresse sèche stérile lorsque le bourbillon s'évacue pour absorber le pus"
+    ],
+    "centre_sante": [
+      "Furoncle simple isolé : soins locaux exclusifs (savon doux + compresses tièdes + pansement protecteur). Pas d'antibiothérapie générale systématique",
+      "Incision et drainage chirurgical a minima UNIQUEMENT en cas d'abcès franc collecté et fluctuant (anesthésie locale, lame de bistouri stérile, méchage)",
+      "Antibiothérapie générale per os (Pénicilline M / Oxacilline, Amoxicilline-acide clavulanique, Céfalexine ou Pristinamycine) indiquée seulement si : terrain à risque (diabète, immunodépression), furoncle centro-facial, signes généraux ou lymphangite",
+      "En cas de furonculose récidivante : glycémie à jeun et sérologie VIH systématiques, décolonisation des gîtes bactériens (savon antiseptique, mupirocine nasale pour toute la famille)"
+    ],
+    "hopital_reference": [
+      "Hospitalisation en urgence absolue et antibiothérapie intraveineuse à forte dose en soins intensifs pour staphylococcie maligne de la face",
+      "Excision chirurgicale au bloc opératoire pour anthrax géant"
+    ]
+  },
+  "criteres_reference": [
+    "Furoncle situé sur le visage (lèvre supérieure, nez, paupière)",
+    "Présence de fièvre, frissons ou traînée de lymphangite",
+    "Furoncles multiples récidivants (furonculose)"
+  ],
+  "prevention": [
+    "Hygiène corporelle quotidienne au savon",
+    "Éviter les vêtements trop serrés et synthétiques favorisant les frottements",
+    "Ne jamais partager le matériel de rasage ou les serviettes de toilette",
+    "Prise en charge précoce des traumatismes cutanés et folliculites"
+  ],
+  "remedes_traditionnels": [
+    {
+      "nom": "Cataplasmes tièdes de farine de maïs ou de graines de lin",
+      "niveau_preuve": "B",
+      "description": "L'application de chaleur humide locale augmente l'afflux sanguin et accélère le mûrissement physiologique du furoncle.",
+      "consigne_app": "Autorisé s'il est préparé dans des conditions propres et appliqué à température tiède supportable (jamais brûlant)."
+    },
+    {
+      "nom": "Piquage du bouton à l'épine végétale ou aiguille chauffée",
+      "niveau_preuve": "D",
+      "description": "Pratique populaire fréquente pour évacuer le pus de force.",
+      "consigne_app": "DANGER : Propage l'infection en profondeur et dans la circulation sanguine (risque de septicémie, fasciite nécrosante ou thrombophlébite cérébrale)."
+    }
+  ],
+  "sources": [
+    "Société Française de Dermatologie - Prise en charge des infections cutanées bactériennes courantes",
+    "OMS - Soins de santé primaires : Furonculose et abcès"
+  ],
+  "relecteurs": [
+    { "nom": "Comité Médical DermIA", "titre": "Chirurgien dermatologique", "date": "2026-09-26" }
+  ],
+  "statut_validation": "en_revue"
+}

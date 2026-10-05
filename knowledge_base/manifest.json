@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "generated_at": "2026-10-01T12:00:00Z",
+  "checksum_sha256": "4a7f058091ecb6a4891458e0a12cf219d36a31c5ee9659e99a80e1c22a7f5bc1",
+  "count": 8,
+  "diseases": [
+    { "id": "buruli", "nom": "Ulcère de Buruli", "urgence": "prioritaire", "file": "buruli.json" },
+    { "id": "lepre", "nom": "Lèpre (Maladie de Hansen)", "urgence": "prioritaire", "file": "lepre.json" },
+    { "id": "pian", "nom": "Pian", "urgence": "prioritaire", "file": "pian.json" },
+    { "id": "gale", "nom": "Gale (Scabiose)", "urgence": "standard", "file": "gale.json" },
+    { "id": "teigne", "nom": "Teigne du cuir chevelu et dermatophytose", "urgence": "standard", "file": "teigne.json" },
+    { "id": "impetigo", "nom": "Impétigo", "urgence": "standard", "file": "impetigo.json" },
+    { "id": "eczema", "nom": "Eczéma / Dermatite atopique et de contact", "urgence": "standard", "file": "eczema.json" },
+    { "id": "furoncle", "nom": "Furoncle et Abcès cutané", "urgence": "standard", "file": "furoncle.json" }
+  ]
+}

@@ -1,12 +1,49 @@
+# Python
 .venv*/
 __pycache__/
 *.pyc
 .env
+
+# Bases de données
+*.db
+*.sqlite
+*.sqlite3
+dermia.db
+
+# Jupyter
 .ipynb_checkpoints/
+
+# Données brutes (jamais versionner)
 ml/data/raw/
 ml/data/processed/
-mlruns/
+*.csv
+
+# Modèles entraînés (trop lourds)
 *.pth
 *.tflite
+*.h5
+*.onnx
+
+# MLflow / Runs
+mlruns/
+runs/
+lightning_logs/
+
+# Flutter / Mobile
 mobile/build/
 mobile/.dart_tool/
+mobile/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+mobile/linux/flutter/ephemeral/
+mobile/windows/flutter/ephemeral/
+mobile/macos/Flutter/ephemeral/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini

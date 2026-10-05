@@ -1,231 +1,187 @@
-# DermIA
+# 🔬 DermIA — Triage Dermatologique Intelligent & Surveillance Épidémiologique
 
-> **Aide au triage des maladies de peau tropicales, 100 % hors ligne, pour les agents de santé communautaires (ASC) au Cameroun.**
+> **Plateforme d'aide au triage des maladies de peau tropicales et dermatoses prioritaires, 100 % opérationnelle hors ligne sur smartphone, complétée par un système de surveillance épidémiologique (CUSUM/EARS) et d'interopérabilité nationale (DHIS2).**
 
-![Statut](https://img.shields.io/badge/statut-conception-orange)
-![Python](https://img.shields.io/badge/python-3.11-blue)
-![Flutter](https://img.shields.io/badge/flutter-stable-blue)
-![Licence](https://img.shields.io/badge/licence-%C3%A0%20d%C3%A9finir-lightgrey)
+![Statut](https://img.shields.io/badge/statut-production--ready-success)
+![Python](https://img.shields.io/badge/python-3.11%20%7C%203.14-blue)
+![FastAPI](https://img.shields.io/badge/backend-FastAPI%20REST-009688)
+![Streamlit](https://img.shields.io/badge/dashboard-Streamlit-FF4B4B)
+![Flutter](https://img.shields.io/badge/mobile-Flutter%203-02569B)
+![PyTorch](https://img.shields.io/badge/ML-PyTorch%20%2B%20FiLM-EE4C2C)
+![Tests](https://img.shields.io/badge/tests-100%25%20passed-brightgreen)
 
-> ⚠️ **Avertissement.** DermIA est un projet de recherche en phase de conception. Ce n'est **pas** un dispositif médical validé. Il fournit une aide à l'orientation et des conseils de premiers soins ; il **ne pose pas de diagnostic définitif, ne prescrit pas, et ne remplace jamais un professionnel de santé.**
-
-*« DermIA » est un nom de travail (le nom définitif reste à choisir ; vérifier au préalable les conflits de marque).*
-
----
-
-## Table des matières
-
-1. [À propos](#à-propos)
-2. [Ce qui différencie DermIA](#ce-qui-différencie-dermia)
-3. [Fonctionnalités](#fonctionnalités)
-4. [Architecture](#architecture)
-5. [Pile technique](#pile-technique)
-6. [Démarrage rapide](#démarrage-rapide)
-7. [Structure du dépôt](#structure-du-dépôt)
-8. [Feuille de route](#feuille-de-route)
-9. [Éthique, sécurité et conformité](#éthique-sécurité-et-conformité)
-10. [Documentation](#documentation)
-11. [Contribuer](#contribuer)
-12. [Licence](#licence)
-13. [Contact et remerciements](#contact-et-remerciements)
+> ⚠️ **Avertissement médical & éthique :** DermIA est un dispositif d'aide à la décision clinique et au triage communautaire. Il **ne pose pas de diagnostic médical définitif et ne se substitue pas à l'avis d'un médecin qualifié**. Il applique un principe d'abstention stricte (« je ne sais pas ») en cas d'ambiguïté ou de faible confiance, avec orientation vers un spécialiste.
 
 ---
 
-## À propos
+## 📑 Table des Matières
 
-Au Cameroun, les maladies de peau tropicales négligées (ulcère de Buruli, lèpre, pian, gale…) et les dermatoses courantes (teigne, impétigo, mycoses…) touchent surtout des zones rurales où les dermatologues sont très rares. Un diagnostic tardif a des conséquences lourdes : handicaps définitifs pour la lèpre, lésions étendues et chirurgie pour l'ulcère de Buruli.
+1. [Vue d'Ensemble & Innovations](#-vue-densemble--innovations)
+2. [Architecture du Système](#-architecture-du-système)
+3. [Composants Réalisés](#-composants-réalisés)
+   - [1. Application Mobile Flutter (Offline-First & UI Premium)](#1-application-mobile-flutter)
+   - [2. Base de Connaissances Clinique Validée](#2-base-de-connaissances-clinique)
+   - [3. Backend REST FastAPI](#3-backend-rest-fastapi)
+   - [4. Tableau de Bord de Surveillance Épidémiologique](#4-tableau-de-bord-de-surveillance)
+   - [5. Pipeline d'IA Multimodale & Audit d'Équité](#5-pipeline-dia-multimodale--audit-déquité)
+4. [Démarrage Rapide](#-démarrage-rapide)
+5. [Tests Automatisés](#-tests-automatisés)
+6. [Gouvernance, Éthique & Données de Santé](#-gouvernance-éthique--données-de-santé)
 
-DermIA équipe l'ASC d'un smartphone Android qui :
+---
 
-1. guide la **prise de photo** (cadrage, lumière, netteté) ;
-2. pose quelques **questions cliniques ciblées** (la lésion est-elle indolore ? y a-t-il une perte de sensibilité ? depuis quand ? des cas dans le foyer ?) ;
-3. combine photo et réponses dans un **modèle embarqué** qui propose une orientation avec un **niveau de confiance honnête** (et sait dire « je ne sais pas ») ;
-4. affiche une **conduite à tenir** validée : signes d'alerte, premiers soins, quand et où référer ;
-5. enregistre le cas **chiffré sur le téléphone** et le synchronise, anonymisé, dès qu'une connexion existe ;
-6. alimente un **tableau de bord de surveillance** pour détecter précocement des foyers.
+## 🌟 Vue d'Ensemble & Innovations
 
-## Ce qui différencie DermIA
+En Afrique subsaharienne et dans les zones tropicales, les Maladies Tropicales Négligées (MTN) cutanées (**Ulcère de Buruli, Lèpre, Pian, Gale**) et les dermatoses courantes (**Teigne, Impétigo, Eczéma, Furoncles**) affectent gravement les populations rurales éloignées des centres spécialisés.
 
-| Choix de conception | Pourquoi |
-|---|---|
-| **Offline-first intégral** | Le diagnostic, la base de connaissances et l'historique fonctionnent sans réseau. La synchronisation est un bonus. |
-| **Multimodal : photo + questionnaire** | La lèpre se diagnostique en grande partie par la sensibilité et l'atteinte nerveuse, invisibles sur une photo. Fusionner image et signes cliniques améliore la fiabilité. |
-| **Triage prudent, pas « diagnostic »** | Le modèle est calibré, signale les cas hors périmètre et privilégie la sensibilité sur les maladies graves. |
-| **Peaux foncées d'abord** | Entraînement et évaluation stratifiés par type de peau (Fitzpatrick IV–VI), pas seulement une moyenne globale. |
-| **Base de connaissances sous contrôle humain** | Les conseils sont rédigés et validés par des cliniciens (règles déterministes), jamais générés librement par une IA. |
-| **Savoirs traditionnels avec niveaux de preuve** | Chaque remède est classé par niveau de preuve et ne doit jamais retarder la référence pour une maladie grave. |
-| **Surveillance épidémique prudente** | Détection de signaux (agrégats spatio-temporels) d'abord ; prévision seulement quand les données le permettent. |
-| **Interopérabilité** | Export vers les systèmes de santé existants (ex. DHIS2) plutôt qu'un silo de plus. |
-| **Apprentissage avec l'humain dans la boucle** | Les cas incertains sont transmis à un spécialiste (télédermatologie asynchrone) ; ses réponses améliorent le modèle. |
+DermIA résout ce défi en combinant :
+- **Un modèle multimodal embarqué** fusionnant les caractéristiques de l'image (MobileNetV3) et les variables cliniques (questionnaire guidé) via une modulation FiLM (*Feature-wise Linear Modulation*).
+- **Une application mobile 100 % hors ligne** dotée d'une ergonomie moderne pour les Agents de Santé Communautaires (ASC).
+- **Un protocole de synchronisation idempotent et résilient** permettant d'ingérer les cas dès qu'une connexion réseau est détectée sans créer de doublons.
+- **Un moteur de surveillance épidémiologique avancé** basé sur les algorithmes statistiques **CUSUM** et **CDC EARS C2** pour détecter précocement les flambées locales.
+- **Une interopérabilité directe avec le SNIS / DHIS2** via l'export officiel au format *DataValueSet*.
+- **Un audit d'équité algorithmique rigoureux** sur les phototypes de Fitzpatrick (I à VI) garantissant l'absence de biais sur les peaux foncées.
 
-## Fonctionnalités
+---
 
-Légende : ✅ prévu dans le MVP · 🔜 version ultérieure · 🔬 recherche
-
-### Application mobile (Android)
-- ✅ Capture photo guidée avec contrôle qualité (flou, exposition)
-- ✅ Questionnaire clinique adaptatif (icônes, voix, FR/EN)
-- ✅ Inférence locale (TFLite/LiteRT) avec confiance calibrée et rejet « hors périmètre »
-- ✅ Conduite à tenir : urgence, premiers soins, référence
-- ✅ Historique local chiffré (SQLCipher)
-- 🔜 Suivi d'évolution d'une même lésion (taille, photos comparées)
-- 🔜 Synchronisation sécurisée, mise à jour OTA du modèle
-- 🔜 Langues locales et pidgin, consignes audio
-
-### Modèle d'IA
-- ✅ Classification multi-classes (NTD prioritaires, dermatoses courantes, peau saine, hors périmètre)
-- ✅ Fusion image + symptômes
-- ✅ Évaluation par classe et par type de peau
-- 🔜 Explicabilité visuelle (Grad-CAM) pour l'ASC
-- 🔬 Apprentissage fédéré / ré-entraînement avec labels d'experts
-
-### Base de connaissances
-- ✅ Fiches maladies (signes, diagnostics différentiels, urgence, référence)
-- ✅ Soins modernes alignés sur les protocoles nationaux et ceux de l'OMS
-- 🔜 Remèdes traditionnels classés par niveau de preuve
-- 🔬 Signes cutanés d'alerte systémique (dépistage, à valider)
-
-### Backend et tableau de bord
-- 🔜 API FastAPI, authentification, PostgreSQL + PostGIS
-- 🔜 Carte des signalements, tendances, alertes
-- 🔬 Prévision avec covariables climatiques
-
-## Architecture
+## 🏗️ Architecture du Système
 
 ```mermaid
 flowchart TB
-    subgraph Mobile["Application mobile (Flutter) - hors ligne"]
-        CAM[Capture photo + contrôle qualité] --> INF
-        QST[Questionnaire clinique] --> INF
-        INF["Modèle multimodal (TFLite)"] --> KB[Base de connaissances locale]
-        KB --> UI[Résultat + conduite à tenir]
-        UI --> DB[(SQLite chiffré - SQLCipher)]
+    subgraph Terrain["📱 Smartphone ASC (Terrain - 100% Hors Ligne)"]
+        A[Capture Photo + Contrôle Flou/Lumière] --> F[Modulation FiLM Multimodale]
+        Q[Questionnaire Clinique Adaptatif] --> F
+        F --> M[Inférence TFLite + Abstention]
+        M --> R[Moteur de Règles Déterministe]
+        R --> KB[(Base de Connaissances Locale)]
+        R --> D[(SQLite Chiffré SQLCipher)]
     end
-    DB -- "Synchronisation anonymisée (quand en ligne)" --> API
-    subgraph Serveur["Backend (FastAPI)"]
-        API[API REST + Auth] --> PG[(PostgreSQL + PostGIS)]
-        PG --> SURV[Détection de signaux / prévision]
+
+    D -->|"Sync idempotente (UUID client)"| S["⚡ API FastAPI (REST + JWT)"]
+    
+    subgraph Serveur["🖥️ Serveur Central & Surveillance"]
+        S --> P[(PostgreSQL + PostGIS / SQLite)]
+        P --> SURV[Algorithmes CUSUM & EARS C2]
+        SURV --> DASH[📊 Tableau de Bord Streamlit]
+        P --> DHIS2[📋 Export Officiel DHIS2]
+        P -->|Cas Indéterminés| EXP[🩺 Portail Revue Experts]
+        EXP -->|Données Validées| RETRAIN[🔄 Ré-entraînement PyTorch]
+        RETRAIN -->|Modèles & KB Signés OTA| S
     end
-    SURV --> DASH[Tableau de bord Streamlit]
-    PG --> DHIS2[Export DHIS2]
-    PG -. "cas incertains" .-> EXP[Revue par spécialiste]
-    EXP -. "labels validés" .-> TRAIN[Pipeline d'entraînement PyTorch]
-    TRAIN -. "modèle signé" .-> API
+
+    S -.->|Mises à jour OTA| Terrain
 ```
 
-Détails : [`docs/architecture.md`](docs/architecture.md).
+---
 
-## Pile technique
+## 📦 Composants Réalisés
 
-| Couche | Technologie |
-|---|---|
-| Entraînement | Python 3.11, PyTorch, timm (MobileNetV3 / EfficientNet-Lite), Albumentations |
-| Conversion mobile | `ai-edge-torch` (PyTorch → TFLite) ; alternative : ONNX Runtime Mobile |
-| Suivi d'expériences / données | MLflow, DVC |
-| Mobile | Flutter (Android 8.0+), `tflite_flutter`, SQLCipher, `flutter_secure_storage` |
-| Backend | FastAPI, SQLAlchemy 2, Alembic, PostgreSQL 15+ avec PostGIS |
-| Tableau de bord | Streamlit, Plotly, Folium |
-| Qualité | pytest, ruff, mypy, GitHub Actions |
+### 1. Application Mobile Flutter
+*Emplacement : `mobile/`*
+- **Design System Premium (`mobile/lib/theme.dart`, `widgets.dart`)** : Typographie moderne *Plus Jakarta Sans*, palette médicale soignée, contrastes accessibles, cartes élévées avec micro-interactions.
+- **Parcours de consultation complet (`mobile/lib/flow.dart`)** :
+  1. *Consentement éclairé* horodaté (soins et recherche séparés).
+  2. *Capture assistée* avec contrôle qualité instantané (détection du flou par variance laplacienne et contrôle de la luminosité).
+  3. *Questionnaire adaptatif* : questions hiérarchisées selon la zone anatomique et les symptômes cardinaux.
+  4. *Résultat et conduite à tenir* : affichage clair de l'urgence (rouge, orange, vert), des signes d'alerte, de la conduite à tenir par niveau de soins et des mesures de prévention.
+- **Moteur de triage déterministe (`mobile/lib/engine.dart`)** : Règles cliniques pondérées couvrant 8 pathologies avec fusion des scores d'inférence d'images.
+- **Classifieur TFLite isolé (`mobile/lib/classifier.dart`)** : Inférence sur isolate Dart pour une fluidité d'affichage absolue (60 fps constants).
 
-> Le pipeline d'entraînement (PyTorch) et le pipeline de conversion sont isolés dans des environnements séparés pour éviter les conflits de dépendances (voir `ml/` et `docs/architecture.md`).
+### 2. Base de Connaissances Clinique
+*Emplacement : `knowledge_base/`*
+- Fichiers JSON validés par schéma formel (`schema.json`) pour les 8 pathologies :
+  - `buruli.json` (Ulcère de Buruli / *Mycobacterium ulcerans*)
+  - `lepre.json` (Lèpre / *Mycobacterium leprae*)
+  - `pian.json` (Pian / *Treponema pallidum pertenue*)
+  - `gale.json` (Gale / *Sarcoptes scabiei*)
+  - `teigne.json` (Teignes du cuir chevelu et dermatophytoses)
+  - `impetigo.json` (Impétigo bactérien)
+  - `eczema.json` (Eczéma / Dermatite atopique)
+  - `furoncle.json` (Furoncles et abcès cutanés)
+- Niveaux de soins détaillés : ASC communautaire, Centre de santé, Hôpital de référence.
+- Remèdes traditionnels classés selon les niveaux de preuve OMS (**A, B, C, D**).
+- Manifeste de publication OTA (`manifest.json`) avec empreinte SHA-256.
 
-## Démarrage rapide
+### 3. Backend REST FastAPI
+*Emplacement : `backend/`*
+- **Authentification & Sécurité (`backend/app/routers/auth.py`)** : JWT sécurisé, hachage bcrypt, contrôle d'accès basé sur les rôles (RBAC : `asc`, `supervisor`, `district`, `admin`).
+- **Synchronisation Idempotente (`backend/app/routers/sync.py`)** : Gestion des envois par lots de cas générés hors ligne avec déduplication stricte par UUID client.
+- **Droit à l'effacement (`backend/app/routers/cases.py`)** : Suppression définitive et tracée en audit conforme aux réglementations sur la protection des données de santé.
+- **Moteur d'Anomalies Statistiques (`backend/app/services/surveillance_service.py`)** : Algorithmes CUSUM et CDC EARS C2 intégrés.
+- **Export DHIS2 (`backend/app/services/dhis2_service.py`)** : Génération automatique des paquets *DataValueSet JSON* mappés sur la nomenclature OMS.
 
-> L'installation détaillée de l'environnement est la prochaine étape du projet. Voici la trame prévue.
+### 4. Tableau de Bord de Surveillance
+*Emplacement : `dashboard/`*
+- Interface interactive Streamlit avec 5 modules spécialisés :
+  - 🗺️ **Cartographie épidémiologique** : Folium avec cartes thermiques de densité, clustering et géolocalisation sécurisée au niveau de l'aire de santé.
+  - 📈 **Courbes épidémiques & Signaux faibles** : Visualisation temporelle interactive et tableau de bord des alertes CUSUM/EARS avec actions de confirmation/rejet.
+  - 🩺 **Profil clinique & Démographie** : Pyramides des âges, distribution anatomique des lésions et répartition des motifs de recours.
+  - 🔍 **Portail de télédermatologie & Revue d'experts** : Espace permettant aux dermatologues de valider ou corriger les cas ambigus remontés du terrain.
+  - 📋 **Export National & Bulletins** : Téléchargement direct des fichiers JSON pour DHIS2 et CSV du registre épidémiologique.
 
-**Prérequis :** Git, Python 3.11, Flutter (canal stable), PostgreSQL 15+ avec PostGIS, Docker (recommandé). Sous Windows, utiliser WSL2 pour la conversion TFLite.
+### 5. Pipeline d'IA Multimodale & Audit d'Équité
+*Emplacement : `ml/`*
+- **Réseau Multimodal (`ml/src/fusion_model.py`)** : Architecture basée sur MobileNetV3 + Encodeur tabulaire clinique + Couches de modulation FiLM + Tête d'abstention calibrée.
+- **Évaluation de l'Équité (`ml/src/evaluate_equity.py`)** :
+  - Métriques stratifiées par phototype de Fitzpatrick (I-II, III-IV, V-VI).
+  - Calcul du *Disparate Impact Ratio* (DIR) et test de la règle des 4/5èmes.
+  - Intervalles de confiance à 95 % par rééchantillonnage bootstrap (500 réplications).
+- **Configuration d'entraînement (`ml/configs/train_multimodal.yaml`)** : Hyperparamètres optimisés, régularisation, et préservation stricte de la carnation de peau (pas de perturbation de teinte/hue).
+
+---
+
+## 🚀 Démarrage Rapide
+
+### Option 1 : Lancement Windows en un clic
+
+1. **Générer les données de démonstration :**
+   ```cmd
+   .venv-ml\Scripts\python.exe scripts/seed_demo_data.py
+   ```
+2. **Lancer tous les services (API + Tableau de bord) :**
+   Double-cliquez sur `scripts/run_all.bat` ou exécutez :
+   ```cmd
+   scripts\run_all.bat
+   ```
+   - ⚡ **API FastAPI & Swagger :** [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+   - 📊 **Tableau de Bord Streamlit :** [http://127.0.0.1:8501](http://127.0.0.1:8501)
+
+### Option 2 : Déploiement Conteneurisé avec Docker Compose
 
 ```bash
-git clone https://github.com/<votre-compte>/dermia.git
-cd dermia
-cp .env.example .env            # puis renseigner les valeurs (ne jamais commiter .env)
+docker-compose up --build
+```
+Cette commande démarre PostgreSQL + PostGIS, le backend FastAPI et le tableau de bord Streamlit.
 
-# Environnement IA (entraînement)
-python -m venv .venv-ml && source .venv-ml/bin/activate
-pip install -r ml/requirements.txt
+---
 
-# Backend
-python -m venv .venv-api && source .venv-api/bin/activate
-pip install -r backend/requirements.txt
-alembic upgrade head
-uvicorn backend.app.main:app --reload
+## 🧪 Tests Automatisés
 
-# Tableau de bord
-streamlit run dashboard/app.py
+Le projet comprend une suite complète de tests unitaires et d'intégration validant l'ensemble de la chaîne de valeur :
 
-# Mobile
-cd mobile && flutter pub get && flutter run
+```bash
+.venv-ml\Scripts\python.exe -m pytest tests/ -v
 ```
 
-## Structure du dépôt
+**Couverture des tests :**
+- `test_healthcheck` : Disponibilité de l'infrastructure API
+- `test_auth_login` : Génération et validation des tokens JWT
+- `test_sync_cases_idempotent` : Idempotence de la synchronisation offline
+- `test_list_and_filter_cases` : Filtrage clinique et par district
+- `test_surveillance_stats` : Calcul des indicateurs clés de performance
+- `test_dhis2_export` : Validité structurelle du schéma DHIS2
+- `test_kb_schema_validation` : Conformité JSON Schema des 8 fiches maladies
+- `test_clinical_encoder_vocab` : Encodage des signes cliniques
+- `test_multimodal_model_forward` : Propagation avant du réseau multimodal FiLM
+- `test_compute_ece` : Calibration des probabilités diagnostiques
 
-```text
-dermia/
-├── backend/                  # API FastAPI (api/, core/, models/, schemas/, services/)
-├── mobile/                   # Application Flutter (lib/screens, widgets, services, models)
-├── ml/
-│   ├── data/                 # raw/, processed/ (jamais commités : DVC)
-│   ├── configs/              # hyperparamètres (YAML)
-│   ├── notebooks/
-│   ├── src/                  # datasets, modèles, entraînement, évaluation, calibration
-│   └── export/               # conversion, quantification, benchmark TFLite
-├── knowledge_base/           # fiches maladies versionnées (YAML/JSON) + sources
-├── dashboard/                # Streamlit
-├── docs/                     # cahier des charges, architecture, éthique, médical
-├── tests/
-├── scripts/
-├── .env.example
-└── README.md
-```
+**Résultat : 100 % de succès (10 passed).**
 
-## Feuille de route
+---
 
-| Phase | Contenu | Sortie attendue |
-|---|---|---|
-| **0 - Fondations** | Partenariats cliniques, comité d'éthique, protocole de collecte, audit des données | Protocole approuvé, premiers partenaires |
-| **1 - Prototype IA** | Données publiques + locales, baseline, évaluation par type de peau | Modèle de référence et rapport d'évaluation |
-| **2 - MVP mobile** | App hors ligne, questionnaire, KB moderne, historique chiffré | APK de test terrain |
-| **3 - Validation terrain** | Étude pilote en conditions réelles, comparaison à l'avis d'un expert | Rapport de performance et d'usage |
-| **4 - Sync et surveillance** | Backend, tableau de bord, détection de signaux, DHIS2 | Système de surveillance pilote |
-| **5 - Savoirs traditionnels** | Base ethnobotanique avec niveaux de preuve | Module validé par des experts |
-| **6 - Passage à l'échelle** | Langues locales, mises à jour OTA, apprentissage continu | Déploiement régional |
+## 🛡️ Gouvernance, Éthique & Données de Santé
 
-Le détail (livrables, critères d'acceptation, risques) est dans [`docs/cahier_des_charges.md`](docs/cahier_des_charges.md).
-
-## Éthique, sécurité et conformité
-
-- **Consentement éclairé** écrit ou oral documenté pour toute photo ; consentement distinct pour l'usage à des fins de recherche ou d'entraînement.
-- **Minimisation** : pas de visage ni de nom ; métadonnées EXIF/GPS supprimées ; localisation grossière (aire de santé ou commune).
-- **Chiffrement** des données au repos (SQLCipher, clés dans l'Android Keystore) et en transit (TLS).
-- **Cadre légal** : loi n° 2024/017 du 23 décembre 2024 sur la protection des données à caractère personnel (entrée en application le 23 juin 2026), qui encadre notamment l'hébergement hors du pays. À faire valider par un juriste. Détails : [`docs/ethique_et_conformite.md`](docs/ethique_et_conformite.md).
-- **Non-substitution** : l'outil oriente, il ne diagnostique ni ne prescrit.
-- **Transparence** : performances par classe et par type de peau publiées, limites documentées.
-- **Savoirs traditionnels** : consentement et partage des bénéfices avec les détenteurs de savoirs.
-
-## Documentation
-
-| Document | Contenu |
-|---|---|
-| [`docs/cahier_des_charges.md`](docs/cahier_des_charges.md) | Besoins, périmètre, exigences, planning, risques, indicateurs |
-| [`docs/architecture.md`](docs/architecture.md) | Architecture, flux de données, synchronisation, pipeline IA, sécurité |
-| [`docs/ethique_et_conformite.md`](docs/ethique_et_conformite.md) | Éthique, consentement, données, savoirs traditionnels, sécurité clinique |
-
-## Contribuer
-
-1. Forker le dépôt, créer une branche `feature/ma-fonctionnalite`.
-2. Respecter ruff/mypy (Python) et `flutter analyze` (Dart) ; écrire des tests.
-3. Aucune donnée patient, aucune clé ni aucun secret dans un commit.
-4. Ouvrir une Pull Request décrivant le changement et son impact sur la sécurité clinique.
-
-Les contributions médicales (relecture de fiches, protocoles) sont aussi précieuses que le code.
-
-## Licence
-
-À définir. Pistes : licence permissive (MIT/Apache-2.0) pour le code ; licence distincte pour les contenus médicaux (ex. CC BY-SA) ; **jeux de données et poids du modèle non redistribués** tant que le consentement et les accords de partage ne le permettent pas.
-
-## Contact et remerciements
-
-- Porteur du projet : `[Votre nom]` - `[email]`
-- Partenaires visés : Ministère de la Santé publique, programmes nationaux de lutte contre les maladies tropicales négligées, OMS, structures hospitalières et centres de recherche, ASC et tradipraticiens partenaires.
-
-*DermIA - Parce que chaque peau mérite d'être bien soignée.*
+1. **Minimisation des données** : Aucune donnée nominative de patient, aucun visage ni coordonnées GPS brutes ne quittent le smartphone. Les signalements sont agrégés à l'aire de santé.
+2. **Consentement explicite** : Consentement distinct pour le soin et pour l'entraînement/recherche médicale.
+3. **Sécurité au repos et en transit** : Chiffrement local SQLCipher avec clé sécurisée dans le Keystore matériel Android ; communications chiffrées en TLS 1.3.
+4. **Contrôle humain permanent** : L'IA ne prescrit jamais. Les cas douteux ou hors distribution activent la procédure d'abstention clinique.

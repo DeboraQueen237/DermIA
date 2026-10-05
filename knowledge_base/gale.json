@@ -1,0 +1,85 @@
+{
+  "id": "gale",
+  "version": "1.0.0",
+  "derniere_mise_a_jour": "2026-10-01",
+  "noms": {
+    "fr": "Gale (Scabiose)",
+    "en": "Scabies",
+    "locaux": [
+      { "langue": "Dioula", "nom": "N'Tchian", "region": "Afrique de l'Ouest" },
+      { "langue": "Baoulé", "nom": "Gbafla", "region": "Côte d'Ivoire" }
+    ]
+  },
+  "urgence": "standard",
+  "classification_oms": "Ectoparasitose cutanée - MTN cutanée ajoutée en 2017",
+  "signes_evocateurs": [
+    "Prurit (démangeaisons intenses) à prédominance nocturne ou au déshabillage",
+    "Localisations typiques : espaces interdigitaux des mains, face antérieure des poignets, coudes, aisselles, aréoles mammaires, ombilic, verge et scrotum chez l'homme",
+    "Sillons scabieux filiformes et vésicules perlées pathognomoniques",
+    "Nodules scabieux prurigineux rouge-brunâtres aux organes génitaux masculins",
+    "Notion de prurit familial ou cas similaires dans le même lit, ménage, pensionnat ou caserne",
+    "Particularité du nourrisson : atteinte fréquente des paumes, plantes des pieds (vésiculo-pustules plantaires), cuir chevelu et visage"
+  ],
+  "diagnostics_differentiels": [
+    "Dermatite atopique ou eczéma",
+    "Prurigo strophulus ou piqûres d'insectes",
+    "Pédiculose corporelle",
+    "Lichen plan",
+    "Impétigo secondaire"
+  ],
+  "signes_alerte": [
+    "Surinfection bactérienne secondaire (impétiginisation) : suintement purulent, croûtes mélicériques, adénopathies satellites douloureuses, fièvre",
+    "Gale profuse ou gale croûteuse (norvégienne) : hyperkératose généralisée, croûtes blanchâtres farineuses très contagieuses chez sujet dénutri ou immunodéprimé (VIH)",
+    "Présence d'hématurie ou d'œdème péri-orbitaire chez l'enfant suggérant une glomérulonéphrite aiguë post-streptococcique secondaire"
+  ],
+  "conduite_a_tenir": {
+    "communautaire_asc": [
+      "Orienter vers le centre de santé pour prescription du traitement acaricide",
+      "TRAITER SIMULTANÉMENT TOUS LES MEMBRES DU MÉNAGE ET CONTACTS SEXUELS, même sans symptômes visibles",
+      "Décontamination de l'environnement : laver les vêtements, serviettes et draps portés dans les 4 derniers jours à l'eau très chaude (> 60°C) ou les enfermer dans un sac plastique hermétique étanche pendant 72 heures au soleil",
+      "Couper les ongles très courts pour éviter les lésions de grattage et surinfections bactériennes",
+      "Prévenir que les démangeaisons peuvent persister 2 à 3 semaines après le traitement réussi (prurit post-scabieux allergique)"
+    ],
+    "centre_sante": [
+      "Traitement topique : Perméthrine crème 5% (application sur tout le corps du cou aux orteils, laissée 8-14h, à répéter à J8) ou Benzoate de benzyle lotion 25% (diluée chez l'enfant)",
+      "OU Traitement oral : Ivermectine per os (200 µg/kg dose unique, répétée à J8-J14 si nécessaire) - contre-indiquée chez enfant < 15 kg et femme enceinte",
+      "Si surinfection bactérienne (impétigo) : traiter d'abord la surinfection par antiseptiques locaux et antibiotiques antistaphylococciques oraux avant l'application de lotions irritantes"
+    ],
+    "hopital_reference": [
+      "Hospitalisation en isolement contact pour gale croûteuse norvégienne",
+      "Protocole combiné Ivermectine per os répétée + Kératolytiques (vaseline salicylée) + Perméthrine topique"
+    ]
+  },
+  "criteres_reference": [
+    "Suspicion de gale croûteuse hyperkératosique",
+    "Échec thérapeutique après deux cures bien conduites",
+    "Surinfection sévère avec fièvre ou altération de l'état général"
+  ],
+  "prevention": [
+    "Éviter le partage des vêtements, matelas et literie non traités",
+    "Dépistage et traitement systématique des collectivités scolaires et orphelinats en cas de flambée",
+    "Campagnes communautaires d'administration massive d'ivermectine dans les foyers de haute endémie"
+  ],
+  "remedes_traditionnels": [
+    {
+      "nom": "Huile de Neem (Azadirachta indica)",
+      "niveau_preuve": "B",
+      "description": "L'azadirachtine possède des propriétés acaricides démontrées in vitro et dans plusieurs études cliniques préliminaires.",
+      "consigne_app": "Peut être utilisée en soutien dans les communautés éloignées si aucun acaricide pharmaceutique n'est disponible, mais ne remplace pas la Perméthrine ou l'Ivermectine recommandées."
+    },
+    {
+      "nom": "Bains de kérosène, essence ou mélanges insecticides ménagers",
+      "niveau_preuve": "D",
+      "description": "Pratique dramatiquement fréquente et extrêmement dangereuse.",
+      "consigne_app": "INTERDICTION ABSOLUE : Risque de brûlure chimique cutanée majeure, intoxication neurotoxique et rénale mortelle, absorption systémique toxique."
+    }
+  ],
+  "sources": [
+    "OMS - Recommandations pour le contrôle et la prise en charge de la gale (2020)",
+    "International Alliance for the Control of Scabies (IACS) Criteria for Diagnosis of Scabies"
+  ],
+  "relecteurs": [
+    { "nom": "Comité Médical DermIA", "titre": "Expert parasitologie cutanée", "date": "2026-09-18" }
+  ],
+  "statut_validation": "en_revue"
+}

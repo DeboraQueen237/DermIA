@@ -1,0 +1,81 @@
+{
+  "id": "pian",
+  "version": "1.0.0",
+  "derniere_mise_a_jour": "2026-10-01",
+  "noms": {
+    "fr": "Pian",
+    "en": "Yaws",
+    "locaux": [
+      { "langue": "Baoulé", "nom": "Aklou", "region": "Côte d'Ivoire" },
+      { "langue": "Bété", "nom": "Gnan", "region": "Côte d'Ivoire" }
+    ]
+  },
+  "urgence": "prioritaire",
+  "classification_oms": "Treponématose endémique non vénérienne - Cible d'éradication OMS",
+  "signes_evocateurs": [
+    "Papillome framboisé bourgeonnant exsudatif (pianome mère), souvent aux membres inférieurs",
+    "Ulcère peu profond à base granuleuse rouge sombre surmonté d'une croûte jaunâtre",
+    "Atteinte préférentielle des enfants de 2 à 15 ans vivant en milieu rural chaud et humide",
+    "Lésions cutanées secondaires multiples ('framboises') disséminées sur le corps et le visage",
+    "Épaississement hyperkératosique douloureux de la plante des pieds provoquant une démarche 'en canard' (pian crabe)",
+    "Foyer épidémique : plusieurs enfants atteints simultanément dans la même école ou campement"
+  ],
+  "diagnostics_differentiels": [
+    "Ulcère de Buruli",
+    "Impétigo croûteux étendu",
+    "Leishmaniose cutanée",
+    "Syphilis vénérienne congénitale ou acquise",
+    "Verrues vulgaires exubérantes"
+  ],
+  "signes_alerte": [
+    "Douleurs osseuses nocturnes vives aux tibias, avant-bras ou doigts",
+    "Gonflement osseux palpable ou déformation en 'lame de sabre' des tibias (périostite/ostéite)",
+    "Dactylite pianique (gonflement douloureux des phalanges)",
+    "Lésions destructrices du cartilage nasal ou du palais (goundou / gangosa - stade tertiaire tardif)"
+  ],
+  "conduite_a_tenir": {
+    "communautaire_asc": [
+      "Référer au centre de santé pour dépistage sérologique rapide (test combiné DPP Syphilis/Pian)",
+      "Protéger les ulcères avec un pansement propre",
+      "Rechercher et recenser activement tous les enfants en contact au sein de la famille et de l'école",
+      "Notifier immédiatement l'infirmier chef de poste et l'équipe cadre de district (maladie sous surveillance pour éradication)"
+    ],
+    "centre_sante": [
+      "Test sérologique rapide (DPP ou RPR/TPHA)",
+      "Traitement de première ligne OMS : Azithromycine per os en DOSE UNIQUE (30 mg/kg, max 2 g)",
+      "Traitement de seconde ligne en cas d'allergie aux macrolides : Pénicilline benzathine intramusculaire dose unique",
+      "Mise en place d'un traitement de masse ciblé (TCT - Total Community Treatment) de toute la communauté si prévalence > 5%"
+    ],
+    "hopital_reference": [
+      "Prise en charge radiologique des ostéites et périostites",
+      "Chirurgie réparatrice maxillo-faciale en cas de séquelles mutilantes du stade tertiaire"
+    ]
+  },
+  "criteres_reference": [
+    "Tout ulcère ou papillome suspect chez l'enfant en zone forestière",
+    "Douleur ou gonflement osseux associé à une lésion cutanée",
+    "Grappe de cas cutanés dans un même village ou école"
+  ],
+  "prevention": [
+    "Amélioration des conditions d'hygiène corporelle : lavage quotidien au savon et à l'eau propre",
+    "Lavage immédiat et désinfection des égratignures et microtraumatismes cutanés",
+    "Distribution communautaire de traitement prophylactique de masse lors des campagnes d'éradication",
+    "Sensibilisation des enseignants et leaders communautaires"
+  ],
+  "remedes_traditionnels": [
+    {
+      "nom": "Poudres de plantes desséchantes appliquées sur les ulcères",
+      "niveau_preuve": "C",
+      "description": "Utilisé pour assécher la plaie.",
+      "consigne_app": "N'éradique pas la bactérie présente dans le sang et l'os. Peut masquer l'infection qui continue d'évoluer vers les destructions osseuses. Traitement par Azithromycine indispensable."
+    }
+  ],
+  "sources": [
+    "OMS - Stratégie de Morges pour l'éradication du pian",
+    "WHO Guidelines for the recognition and clinical management of yaws (2020)"
+  ],
+  "relecteurs": [
+    { "nom": "Comité Médical DermIA", "titre": "Expert maladies bactériennes de la peau", "date": "2026-09-22" }
+  ],
+  "statut_validation": "en_revue"
+}

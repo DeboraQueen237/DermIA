@@ -1,0 +1,94 @@
+{
+  "id": "buruli",
+  "version": "1.0.0",
+  "derniere_mise_a_jour": "2026-10-01",
+  "noms": {
+    "fr": "Ulcère de Buruli",
+    "en": "Buruli ulcer",
+    "locaux": [
+      { "langue": "Baoulé", "nom": "Aboï", "region": "Côte d'Ivoire (Centre)" },
+      { "langue": "Bété", "nom": "Gbaï", "region": "Côte d'Ivoire (Sud-Ouest)" }
+    ]
+  },
+  "urgence": "prioritaire",
+  "classification_oms": "Maladie Tropicale Négligée (MTN) cutanée - Catégories I, II, III",
+  "signes_evocateurs": [
+    "Nodule sous-cutané ferme, non douloureux au début",
+    "Plaque infiltrée indolore ou œdème diffus d'un membre",
+    "Ulcère à fond propre ou nécrotique avec des bords largement décollés ou excavés",
+    "Peau environnante hyperpigmentée ou luisante",
+    "Absence fréquente de fièvre et de douleur intense (anesthésie due à la mycolactone)",
+    "Évolution subaiguë ou chronique sur plusieurs semaines ou mois",
+    "Contexte écologique : proximité de fleuves, bas-fonds marécageux ou retenues d'eau"
+  ],
+  "diagnostics_differentiels": [
+    "Ulcère phagédénique tropical",
+    "Ulcère veineux ou artériel",
+    "Ulcère de pian tertiaire",
+    "Leishmaniose cutanée",
+    "Mycose profonde ou chromoblastomycose",
+    "Ecthyma gangrenosum"
+  ],
+  "signes_alerte": [
+    "Extension rapide de l'œdème sur l'ensemble d'un membre",
+    "Lésion située à proximité immédiate d'une articulation majeure (coude, genou, cheville)",
+    "Localisation céphalique, faciale, oculaire ou périnéale",
+    "Ulcération géante (Catégorie III OMS > 15 cm)",
+    "Signes de surinfection bactérienne sévère (chaleur locale vive, écoulement purulent fétide, fièvre élevée, tachycardie)"
+  ],
+  "conduite_a_tenir": {
+    "communautaire_asc": [
+      "Référer sans aucun délai vers le centre de santé ou le centre de dépistage et de traitement de l'ulcère de Buruli (CDTUB)",
+      "Poser un pansement stérile propre ou linge propre bouilli non adhérent pour protéger la plaie de la poussière et des mouches",
+      "Interdire formellement toute scarification, incision sauvage ou application de poudres caustiques",
+      "Prendre une photo nette avec une règle graduée à côté de la lésion pour le suivi",
+      "Informer et rassurer le patient : la maladie se guérit complètement par des antibiotiques oraux gratuits"
+    ],
+    "centre_sante": [
+      "Prélèvement pour confirmation diagnostique : écouvillonnage des bords décollés pour PCR IS2404 ou frottis de Ziehl-Neelsen",
+      "Mise en route du protocole OMS standard : Rifampicine (10 mg/kg/j) + Clarithromycine (7.5 mg/kg 2x/j) per os pendant 8 semaines (56 jours)",
+      "Soins de plaies quotidiens : nettoyage au sérum physiologique, pansement vaseliné",
+      "Évaluation de la mobilité articulaire et prévention des rétractions par kinésithérapie douce passive",
+      "Notification obligatoire au système national de surveillance épidémiologique"
+    ],
+    "hopital_reference": [
+      "Débridement chirurgical conservateur si nécrose étendue après début du traitement antibiotique",
+      "Greffe cutanée en filet pour les pertes de substance étendues",
+      "Rééducation fonctionnelle intensive pour prévenir les ankyloses et handicaps moteurs permanents"
+    ]
+  },
+  "criteres_reference": [
+    "Toute suspicion clinique de nodule, plaque, œdème ou ulcère indolore en zone d'endémie",
+    "Lésion atteignant une articulation ou le visage",
+    "Toute lésion de diamètre supérieur à 5 cm"
+  ],
+  "prevention": [
+    "Port de vêtements longs (pantalons et manches longues) et bottes lors des travaux agricoles en bord d'eau marécageuse",
+    "Lavage immédiat à l'eau propre et au savon de toute égratignure, piqûre d'insecte ou traumatisme cutané",
+    "Consultation précoce dès l'apparition d'un nodule ou bouton indolore persistant plus de 2 semaines",
+    "Sensibilisation communautaire pour briser le mythe de l'origine mystique ou du sort jeté"
+  ],
+  "remedes_traditionnels": [
+    {
+      "nom": "Cataplasmes de feuilles caustiques ou décoctions de plantes non stériles",
+      "niveau_preuve": "D",
+      "description": "Pratiques fréquentes consistant à appliquer des feuilles broyées corrosives pour 'brûler' le nodule.",
+      "consigne_app": "DANGER : Risque majeur de nécrose tissulaire massive, de surinfection bactérienne grave et de retard de traitement fatal. Ne jamais appliquer sur la lésion."
+    },
+    {
+      "nom": "Pommades à base d'huile de palme brute ou d'argile",
+      "niveau_preuve": "C",
+      "description": "Utilisé traditionnellement pour adoucir la peau.",
+      "consigne_app": "Innocuité non prouvée sur plaie ouverte. Peut favoriser la prolifération microbienne anaérobie. À proscrire sur l'ulcère."
+    }
+  ],
+  "sources": [
+    "OMS - Buruli Ulcer: Diagnosis, Treatment and Prevention (Recommandations 2021)",
+    "Programme National de Lutte contre l'Ulcère de Buruli (PNLUB Côte d'Ivoire)",
+    "MSF - Guide clinique et thérapeutique des maladies tropicales négligées"
+  ],
+  "relecteurs": [
+    { "nom": "Comité Médical DermIA", "titre": "Groupe de travail dermatologie tropicale", "date": "2026-09-15" }
+  ],
+  "statut_validation": "en_revue"
+}
