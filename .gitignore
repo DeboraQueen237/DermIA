@@ -47,3 +47,18 @@ mobile/macos/Flutter/ephemeral/
 .DS_Store
 Thumbs.db
 desktop.ini
+# Archives volumineuses
+*.zip
+# Fichiers volumineux
+*.zip
+*.rar
+*.7z
+*.tar.gz
+
+# Modèles ML
+*.onnx
+*.onnx.data
+*.pt
+*.pth
+*.h5
+*.tflite

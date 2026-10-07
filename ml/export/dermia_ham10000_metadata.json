@@ -1,0 +1,24 @@
+{
+  "classes": [
+    "carcinome_basal",
+    "dermatofibrome",
+    "keratose_actinique",
+    "keratose_benigne",
+    "lesion_vasculaire",
+    "melanome",
+    "naevus"
+  ],
+  "img_size": 300,
+  "temperature": 0.9671103954315186,
+  "arch": "efficientnet_b3",
+  "mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "std": [
+    0.229,
+    0.224,
+    0.225
+  ]
+}
