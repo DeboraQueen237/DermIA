@@ -1,11 +1,16 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math' as math;
 import 'dart:typed_data';
 
-import 'package:flutter/foundation.dart' show compute;
+import 'package:flutter/foundation.dart' show compute, debugPrint;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:image/image.dart' as img;
-import 'package:tflite_flutter/tflite_flutter.dart';
+import 'package:onnxruntime/onnxruntime.dart';
+
+// ---------------------------------------------------------------------------
+// Types publics
+// ---------------------------------------------------------------------------
 
 /// Score d'une classe du modèle (probabilité calibrée).
 class ClassScore {
@@ -15,113 +20,184 @@ class ClassScore {
 }
 
 /// Correspondance classes du modèle -> identifiants de la base de connaissances.
-const modelToKb = {
-  'gale': 'gale',
-  'teigne_mycose': 'teigne',
-  'impetigo': 'impetigo',
-  'eczema': 'eczema',
-  'tungiase': 'tungiase',
-  'buruli': 'buruli',
+///
+/// Seules les classes présentes dans la KB contribuent au triage.
+/// Les classes HAM10000 (melanome, naevus, carcinome_basal, etc.) sont
+/// affichées à titre informatif mais pas encore exploitées par le moteur.
+const modelToKb = <String, String>{
   'lepre': 'lepre',
-  'pian': 'pian',
 };
+
+// ---------------------------------------------------------------------------
+// Prétraitement d'image (exécuté dans un isolate)
+// ---------------------------------------------------------------------------
 
 class _PrepArgs {
   final String path;
   final int size;
-  final bool nchw;
-  const _PrepArgs(this.path, this.size, this.nchw);
+  const _PrepArgs(this.path, this.size);
 }
 
-const _mean = [0.485, 0.456, 0.406];
-const _std = [0.229, 0.224, 0.225];
+const _mean = <double>[0.485, 0.456, 0.406];
+const _std = <double>[0.229, 0.224, 0.225];
 
-/// Prétraitement dans un isolate : redimensionne et normalise (ImageNet).
+/// Prétraitement dans un isolate : redimensionne + normalise (ImageNet, NCHW).
+///
+/// Sortie : Float32List de taille [3 * size * size] en layout NCHW.
 Float32List _prep(_PrepArgs a) {
   final decoded = img.decodeImage(File(a.path).readAsBytesSync());
-  if (decoded == null) throw Exception('image illisible');
-  final r = img.copyResize(decoded,
-      width: a.size, height: a.size, interpolation: img.Interpolation.linear);
+  if (decoded == null) {
+    throw Exception('Image illisible : ${a.path}');
+  }
+
+  final resized = img.copyResize(
+    decoded,
+    width: a.size,
+    height: a.size,
+    interpolation: img.Interpolation.linear,
+  );
+
   final s = a.size;
   final n = s * s;
   final out = Float32List(3 * n);
+
   for (var y = 0; y < s; y++) {
     for (var x = 0; x < s; x++) {
-      final px = r.getPixel(x, y);
-      final v0 = (px.r / 255.0 - _mean[0]) / _std[0];
-      final v1 = (px.g / 255.0 - _mean[1]) / _std[1];
-      final v2 = (px.b / 255.0 - _mean[2]) / _std[2];
-      if (a.nchw) {
-        final i = y * s + x;
-        out[i] = v0;
-        out[n + i] = v1;
-        out[2 * n + i] = v2;
-      } else {
-        final i = (y * s + x) * 3;
-        out[i] = v0;
-        out[i + 1] = v1;
-        out[i + 2] = v2;
-      }
+      final px = resized.getPixel(x, y);
+      final i = y * s + x;
+      out[i] = (px.r / 255.0 - _mean[0]) / _std[0];
+      out[n + i] = (px.g / 255.0 - _mean[1]) / _std[1];
+      out[2 * n + i] = (px.b / 255.0 - _mean[2]) / _std[2];
     }
   }
+
   return out;
 }
 
-/// Charge `assets/model/dermia.tflite` + `labels.json` s'ils existent.
-/// Sinon `available` reste faux et l'application fonctionne sans modèle d'image.
+// ---------------------------------------------------------------------------
+// Classifieur ONNX Runtime
+// ---------------------------------------------------------------------------
+
+/// Classifieur ONNX Runtime (modèle unifié 8 classes).
+///
+/// Charge `assets/model/dermia_unified.onnx` + `assets/model/metadata.json`.
+/// Si le chargement échoue, `available` reste faux et l'application
+/// fonctionne en mode questionnaire seul.
 class SkinClassifier {
-  Interpreter? _interp;
-  List<String> labels = [];
-  bool _nchw = true;
-  int _size = 224;
+  OrtSession? _session;
+  List<String> labels = <String>[];
+  int _size = 300;
+  double _temperature = 1.0;
   bool _loaded = false;
 
-  bool get available => _interp != null;
+  /// Indique si le modèle est chargé et prêt à l'inférence.
+  bool get available => _session != null;
 
+  /// Charge le modèle ONNX et ses métadonnées.
   Future<void> load() async {
     if (_loaded) return;
     _loaded = true;
+
     try {
-      final raw = await rootBundle.loadString('assets/model/labels.json');
-      labels = List<String>.from(jsonDecode(raw) as List);
-      final opts = InterpreterOptions()..threads = 2;
-      final it = await Interpreter.fromAsset('assets/model/dermia.tflite',
-          options: opts);
-      final shape = it.getInputTensor(0).shape;
-      _nchw = shape[1] == 3;
-      _size = _nchw ? shape[2] : shape[1];
-      _interp = it;
-    } catch (_) {
-      _interp = null; // modèle absent : mode questionnaire seul
+      // 1. Métadonnées
+      final metaRaw = await rootBundle.loadString(
+        'assets/model/metadata.json',
+      );
+      final meta = jsonDecode(metaRaw) as Map<String, dynamic>;
+
+      labels = List<String>.from(meta['classes'] as List);
+      _size = (meta['img_size'] as num).toInt();
+      _temperature = (meta['temperature'] as num).toDouble();
+
+      debugPrint(
+        '[Classifier] ${labels.length} classes, '
+        'size=$_size, T=$_temperature',
+      );
+
+      // 2. Session ONNX
+      final raw = await rootBundle.load(
+        'assets/model/dermia_unified.onnx',
+      );
+      final bytes = raw.buffer.asUint8List();
+
+      OrtEnv.instance.init();
+      final opts = OrtSessionOptions();
+      _session = OrtSession.fromBuffer(bytes, opts);
+
+      debugPrint('[Classifier] Modèle ONNX chargé avec succès');
+    } catch (e, st) {
+      debugPrint('[Classifier] Erreur de chargement : $e\n$st');
+      _session = null;
     }
   }
 
-  /// Retourne les classes triées par probabilité décroissante, ou null.
+  /// Retourne les classes triées par probabilité décroissante, ou null
+  /// si le modèle n'est pas disponible.
   Future<List<ClassScore>?> predict(String path) async {
-    final it = _interp;
-    if (it == null) return null;
+    final session = _session;
+    if (session == null) return null;
+
     final s = _size;
-    final flat = await compute(_prep, _PrepArgs(path, s, _nchw));
-    final Object input = _nchw
-        ? [
-            List.generate(
-                3,
-                (c) => List.generate(
-                    s, (y) => List.generate(s, (x) => flat[c * s * s + y * s + x])))
-          ]
-        : [
-            List.generate(
-                s,
-                (y) => List.generate(
-                    s, (x) => List.generate(3, (c) => flat[(y * s + x) * 3 + c])))
-          ];
-    final output = [List<double>.filled(labels.length, 0.0)];
-    it.run(input, output);
-    final scores = [
-      for (var i = 0; i < labels.length; i++) ClassScore(labels[i], output[0][i])
+    final flat = await compute(_prep, _PrepArgs(path, s));
+
+    // Tensor d'entrée NCHW : [1, 3, s, s]
+    final inputOrt = OrtValueTensor.createTensorWithDataList(
+      flat,
+      <int>[1, 3, s, s],
+    );
+
+    final inputs = <String, OrtValue>{'input': inputOrt};
+    final runOptions = OrtRunOptions();
+
+    List<OrtValue?>? outputs;
+    try {
+      outputs = await session.runAsync(runOptions, inputs);
+    } finally {
+      inputOrt.release();
+      runOptions.release();
+    }
+
+    if (outputs == null || outputs.isEmpty || outputs[0] == null) {
+      if (outputs != null) {
+        for (final o in outputs) {
+          o?.release();
+        }
+      }
+      return null;
+    }
+
+    // Sortie : [[logit_0, ..., logit_N]]
+    final raw = outputs[0]!.value as List;
+    final row = raw[0] as List;
+    final logits = <double>[
+      for (final v in row) (v as num).toDouble(),
+    ];
+
+    for (final o in outputs) {
+      o?.release();
+    }
+
+    // Softmax avec température (calibration clinique)
+    final scaled = <double>[
+      for (final v in logits) v / _temperature,
+    ];
+    final maxV = scaled.reduce(math.max);
+    final expV = <double>[
+      for (final v in scaled) math.exp(v - maxV),
+    ];
+    final sumExp = expV.reduce((a, b) => a + b);
+    final probs = <double>[
+      for (final v in expV) v / sumExp,
+    ];
+
+    final scores = <ClassScore>[
+      for (var i = 0; i < labels.length; i++)
+        ClassScore(labels[i], probs[i]),
     ]..sort((a, b) => b.p.compareTo(a.p));
+
     return scores;
   }
 }
 
-final classifier = SkinClassifier();
+/// Instance globale du classifieur.
+final SkinClassifier classifier = SkinClassifier();
