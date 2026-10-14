@@ -1,18 +1,36 @@
+
+---
+
+## 📄 Fichier 2 : `ml/configs/train_multimodal.yaml` (avec commentaires honnêtes)
+
+```yaml
+# ═══════════════════════════════════════════════════════════════════════════
 # Configuration d'entraînement multimodal DermIA (Image + Clinique)
+# ═══════════════════════════════════════════════════════════════════════════
+#
+# ⚠️ STATUT : Cette configuration décrit l'OBJECTIF FUTUR du modèle FiLM
+# multimodal. Le modèle actuellement DÉPLOYÉ est un EfficientNet-B3
+# image-only (voir README section "Pipeline IA : Réalisé vs Prévu").
+#
+# Ce fichier sert de référence pour la prochaine phase d'entraînement
+# (nécessite un dataset MTN complet).
+# ═══════════════════════════════════════════════════════════════════════════
+
 experiment:
   name: "dermia_multimodal_v1"
   version: "1.0.0"
   seed: 42
   tracking: "mlflow"
+  status: "PLANNED"  # ← Pas encore entraîné
 
 data:
-  manifest_path: "ml/data/manifest.csv"
-  images_root: "ml/data/raw/fitzpatrick17k/images"
-  patient_id_col: "patient_id" # Split par patient strict (anti-leakage)
+  manifest_path: "ml/data/manifest_unified.csv"  # ← Corrigé
+  images_root: "ml/data/raw"
+  patient_id_col: "group_id"  # ← Corrigé
   label_col: "label"
-  fitzpatrick_col: "fitzpatrick_scale"
-  image_size: 224
-  batch_size: 32
+  fitzpatrick_col: "fst"
+  image_size: 300  # ← EfficientNet-B3
+  batch_size: 24
   num_workers: 2
   train_split: 0.70
   val_split: 0.15
@@ -20,12 +38,13 @@ data:
 
 model:
   architecture: "multimodal_film"
-  backbone: "mobilenetv3_small_100"
+  backbone: "efficientnet_b3"  # ← Recommandé au lieu de MobileNetV3
   pretrained: true
   clinical_dim: 16
   num_classes: 8
   dropout_rate: 0.3
   classes:
+    # Objectif futur : 8 MTN
     - "buruli"
     - "lepre"
     - "pian"
@@ -36,33 +55,32 @@ model:
     - "furoncle"
 
 training:
-  epochs: 30
+  epochs: 40
   optimizer: "AdamW"
-  learning_rate: 0.0005
+  learning_rate: 0.0003
   weight_decay: 0.01
-  scheduler: "cosine_annealing"
-  min_lr: 0.000005
-  loss: "focal_loss" # Adaptée aux classes rares
+  scheduler: "one_cycle"
+  loss: "focal_loss"
   focal_gamma: 2.0
   class_weighting: true
 
 augmentation:
   # Attention éthique : pas d'altération de teinte (hue) pour respecter la carnation de peau
-  random_crop_scale: [0.7, 1.0]
+  random_crop_scale: [0.6, 1.0]
   horizontal_flip: true
   vertical_flip: true
-  rotation_degrees: 20
+  rotation_degrees: 25
   color_jitter:
-    brightness: 0.2
-    contrast: 0.2
-    saturation: 0.1
-    hue: 0.0 # FIXE A 0.0 POUR NE PAS DÉNATURER LA TEINTE DE PEAU
+    brightness: 0.25
+    contrast: 0.20
+    saturation: 0.10
+    hue: 0.0
   gaussian_blur: true
 
 calibration:
   method: "temperature_scaling"
   ece_bins: 10
-  target_ece_max: 0.05 # ECE cible < 5%
+  target_ece_max: 0.05
 
 fairness_audit:
   evaluate_by_fitzpatrick: true
@@ -73,12 +91,10 @@ fairness_audit:
       types: [3, 4]
     - name: "foncée"
       types: [5, 6]
-  disparate_impact_threshold: 0.80 # Règle des 4/5èmes
-  bootstrap_replicates: 500
+  disparate_impact_threshold: 0.80
+  bootstrap_replicates: 1000
 
 export:
-  target_format: "tflite"
-  quantization: "int8_ptq"
-  quantization_calibration_samples: 200
-  equivalence_max_atol: 0.02
+  target_format: "onnx"  # ← Corrigé (était tflite)
+  opset_version: 18
   output_dir: "ml/export"

@@ -199,9 +199,14 @@ class _CaptureScreenState extends State<CaptureScreen> {
   ImageQuality? _quality;
   bool _busy = false;
 
-  Future<void> _pick(ImageSource src) async {
-    final f =
-        await _picker.pickImage(source: src, maxWidth: 1024, imageQuality: 85);
+    Future<void> _pick(ImageSource src) async {
+    // Windows ne supporte pas la caméra via image_picker → fallback galerie
+    final effectiveSrc = Platform.isWindows ? ImageSource.gallery : src;
+    final f = await _picker.pickImage(
+      source: effectiveSrc,
+      maxWidth: 1024,
+      imageQuality: 85,
+    );
     if (f == null) return;
     setState(() {
       _busy = true;
@@ -360,6 +365,9 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
       bottom: Row(children: [
         if (_page > 0) ...[
           OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                minimumSize: const Size(0, 48),
+              ),
               onPressed: () => setState(() => _page--),
               child: const Text('Précédent')),
           const SizedBox(width: 12),
